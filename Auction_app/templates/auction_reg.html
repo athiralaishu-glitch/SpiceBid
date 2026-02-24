@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Kaiadmin - Create Auction</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    <link rel="icon" href="{% static 'accounts/assets/img/kaiadmin/favicon.ico' %}" type="image/x-icon" />
+
+    <!-- Fonts and icons -->
+    <script src="{% static 'accounts/assets/js/plugin/webfont/webfont.min.js' %}"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: ["Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
+          urls: ["assets/css/fonts.min.css"]
+        },
+        active: function() { sessionStorage.fonts = true; }
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'accounts/assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'accounts/assets/css/plugins.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'accounts/assets/css/kaiadmin.min.css' %}" />
+
+    <!-- Custom Styles -->
+  <style>
+    .auction-card {
+        border: 2px solid #ced4da; /* grey border */
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        padding: 20px;
+        background-color: #fff;
+    }
+
+    .auction-card .card-header {
+        background-color: #28a745; /* green header */
+        color: #fff;
+        border-bottom: 2px solid #218838; /* darker green line */
+        font-weight: 600;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .auction-card .form-control {
+        border: 2px solid #ced4da; /* grey border for inputs */
+        border-radius: 6px;
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    .auction-card textarea.form-control {
+        resize: none;
+    }
+
+    .auction-card button[type="submit"] {
+        border-radius: 6px;
+        font-size: 1.1rem;
+        padding: 10px 0;
+        background-color: #28a745; /* green button */
+        border: 2px solid #218838;
+        color: #fff;
+    }
+
+    .auction-card button[type="submit"]:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+    /* Focus effect for inputs */
+    .auction-card .form-control:focus {
+        border-color: #1e7e34;
+        box-shadow: 0 0 5px #1e7e34;
+    }
+
+    .container-fluid {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+</style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main-panel">
+            <div class="content">
+                <div class="page-inner">
+                    <div class="container-fluid">
+                        {% block contents %}
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 col-md-10">
+                                <div class="card auction-card">
+                                    <div class="card-header">
+                                        Create New Auction
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="POST" action="#" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            
+                                            <div class="form-group mb-3">
+                                                <label for="title">Title</label>
+                                                <input type="text" class="form-control" name="title" id="title" placeholder="Enter auction title" required>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <label for="description">Description</label>
+                                                <textarea class="form-control" name="description" id="description" placeholder="Enter item description" rows="6" required></textarea>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <label for="starting_price">Starting Price</label>
+                                                <input type="number" class="form-control" name="starting_price" id="starting_price" placeholder="Enter starting price" step="0.01" required>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <label for="image">Upload Image (optional)</label>
+                                                <input type="file" class="form-control" name="image" id="image" accept="image/*">
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <label for="start_time">Start Time</label>
+                                                <input type="datetime-local" class="form-control" name="start_time" id="start_time" required>
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <label for="end_time">End Time</label>
+                                                <input type="datetime-local" class="form-control" name="end_time" id="end_time" required>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary btn-block mt-3">Create Auction</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="container-fluid d-flex justify-content-between">
+                    <nav>
+                        <ul class="nav">
+                            <li class="nav-item"><a class="nav-link" href="http://www.themekita.com">ThemeKita</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Licenses</a></li>
+                        </ul>
+                    </nav>
+                    <div class="copyright">
+                        2024, made with <i class="fa fa-heart text-danger"></i> by <a href="http://www.themekita.com">ThemeKita</a>
+                        | Distributed by <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Core JS Files -->
+    <script src="{% static 'accounts/assets/js/core/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'accounts/assets/js/core/popper.min.js' %}"></script>
+    <script src="{% static 'accounts/assets/js/core/bootstrap.min.js' %}"></script>
+
+    <!-- Plugins -->
+    <script src="{% static 'accounts/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
+    <script src="{% static 'accounts/assets/js/plugin/chart.js/chart.min.js' %}"></script>
+    <script src="{% static 'accounts/assets/js/plugin/sweetalert/sweetalert.min.js' %}"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="{% static 'accounts/assets/js/kaiadmin.min.js' %}"></script>
+</body>
+</html>
