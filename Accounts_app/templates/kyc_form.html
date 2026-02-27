@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Seller KYC</title>
+
+	<link rel="shortcut icon" type="image/png" href="{% static 'accounts/assets/img/favicon.png' %}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'accounts/assets/css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'accounts/assets/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'accounts/assets/css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'accounts/assets/css/responsive.css' %}">
+</head>
+
+<body>
+
+<!-- Header (same as My Account page) -->
+<div class="top-header-area" id="sticker">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<div class="main-menu-wrap">
+					<div class="site-logo">
+						<a href="#">
+							<img src="{% static 'accounts/assets/img/logo.png' %}" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-section breadcrumb-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="breadcrumb-text">
+					<p>Complete Your Verification</p>
+					<h1>Seller KYC Update</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- KYC Form Section -->
+<div class="single-product mt-150 mb-150">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+
+				<div class="card p-5">
+
+					<form method="POST" action="{% url 'save_kyc' %}" enctype="multipart/form-data">
+						{% csrf_token %}
+
+						<h3 class="mb-4">KYC Details</h3>
+
+						<h5 class="mb-3">PAN Details</h5>
+						<div class="form-group mb-3">
+							<input type="text" class="form-control" name="pan_number" placeholder="PAN Number" required>
+						</div>
+
+						<div class="form-group mb-4">
+							<label>PAN Card Image</label>
+							<input type="file" class="form-control" name="pan_card_image" accept="image/*" required>
+						</div>
+
+						<h5 class="mb-3">Aadhaar Details</h5>
+						<div class="form-group mb-3">
+							<input type="text" class="form-control" name="aadhar_number" placeholder="Aadhaar Number" required>
+						</div>
+
+						<div class="form-group mb-4">
+							<label>Aadhaar Card Image</label>
+							<input type="file" class="form-control" name="aadhar_image" accept="image/*" required>
+						</div>
+
+						<h5 class="mb-3">Bank Details</h5>
+						<div class="form-group mb-3">
+							<input type="text" class="form-control" name="bank_account_holder_name" placeholder="Account Holder Name" required>
+						</div>
+
+						<div class="form-group mb-3">
+							<input type="text" class="form-control" name="bank_account_number" placeholder="Bank Account Number" required>
+						</div>
+
+						<div class="form-group mb-4">
+							<input type="text" class="form-control" name="bank_ifsc" placeholder="IFSC Code" required>
+						</div>
+
+						<div>
+							<button type="submit" class="boxed-btn">
+								Submit KYC
+							</button>
+						</div>
+
+					</form>
+
+					<div class="text-center mt-4">
+						<a href="{% url 'seller_dashboard' %}" class="back-btn">
+							← Back to Dashboard
+						</a>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Footer -->
+<script src="{% static 'accounts/assets/js/jquery-1.11.3.min.js' %}"></script>
+<script src="{% static 'accounts/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'accounts/assets/js/main.js' %}"></script>
+
+<style>
+	/* Card Border & Styling */
+	.card {
+		border: 2px solid #797575;
+		border-radius: 12px;
+		background-color: #ffffff;
+		box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+	}
+
+	/* Section Titles */
+	h3 {
+		font-weight: 600;
+		color: #333;
+		text-align: center;
+	}
+
+	h5 {
+		color: #1e7e34;
+		font-weight: 600;
+		margin-top: 20px;
+	}
+
+	/* Input Styling */
+	.form-control {
+		border-radius: 8px;
+		border: 1px solid #ccc;
+		padding: 10px;
+	}
+
+	.form-control:focus {
+		border-color: #28a745;
+		box-shadow: 0 0 5px rgba(40,167,69,0.3);
+	}
+
+	/* Submit Button */
+	/* Submit Button - Full Width */
+.boxed-btn {
+	width: 100%;
+	background-color: #28a745;
+	color: white;
+	padding: 10px;
+	border-radius: 8px;
+	border: none;
+	font-weight: 600;
+	transition: 0.3s ease;
+}
+
+.boxed-btn:hover {
+	background-color: #218838;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+	/* Back Button */
+	.back-btn {
+		display: inline-block;
+		margin-top: 15px;
+		padding: 8px 20px;
+		border-radius: 25px;
+		background-color: #6c757d;
+		color: white;
+		text-decoration: none;
+		font-weight: 500;
+		transition: 0.3s ease;
+	}
+
+	.back-btn:hover {
+		background-color: #5a6268;
+		transform: translateY(-2px);
+	}
+</style>
+
+
+</body>
+</html>

@@ -84,3 +84,37 @@ def buyer_dashboard(request):
 
 def seller_dashboard(request):
     return render(request,'seller_dashboard.html')
+
+def kyc_form(request):
+    return render(request,'kyc_form.html')
+
+def save_kyc(request):
+
+    seller = Seller.objects.get(user=request.user)
+    if request.method == "POST":
+        
+        # Get form data
+        seller.pan_number = request.POST.get("pan_number")
+        seller.pan_card_image = request.FILES.get("pan_card_image")
+
+        seller.aadhar_number = request.POST.get("aadhar_number")
+        seller.aadhar_image = request.FILES.get("aadhar_image")
+
+        seller.bank_account_holder_name = request.POST.get("bank_account_holder_name")
+        seller.bank_account_number = request.POST.get("bank_account_number")
+        seller.bank_ifsc = request.POST.get("bank_ifsc")
+
+        # After updating KYC → set status to Pending
+        seller.kyc_status = "Pending"
+
+        seller.save()
+
+        messages.success(request, "KYC details submitted successfully. Waiting for admin approval.")
+        return redirect("seller_dashboard")
+
+    return render(request, "kyc_form.html")
+
+def seller_account(request):
+    seller = Seller.objects.get(user=request.user)
+    return render(request,'seller_account.html',
+                  {'seller':seller})
