@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login
 from django.contrib import messages
+from django.utils import timezone
+from Auction_app.models import *
 
 from Accounts_app.models import *
 from Adminapp import views
@@ -76,12 +78,36 @@ def login_user(request):
 
     return render(request, "registration.html")
 
-
+#-------------------------------------------------------------------------------------------------------------------------------------
 
 def buyer_dashboard(request):
     return render(request,'buyer_dashboard.html')
 
+def about(request):
+    return render(request,'about.html')
 
+def active_auctions(request):
+    now = timezone.localtime()
+
+    auctions = AuctionDB.objects.filter(
+        is_active=True,
+        start_time__lte=now,
+        end_time__gte=now
+    )
+
+    return render(request, "active_auctions.html", {
+        "auctions": auctions
+    })
+
+def active_auction_viewmore(request):
+    return render(request,'active_auction_viewmore.html')
+
+
+
+
+
+
+#--------------------------------------------------------------------------------------------------------------------------------------
 def seller_dashboard(request):
     return render(request,'seller_dashboard.html')
 
@@ -113,6 +139,7 @@ def save_kyc(request):
         return redirect("seller_dashboard")
 
     return render(request, "kyc_form.html")
+
 
 def seller_account(request):
     seller = Seller.objects.get(user=request.user)

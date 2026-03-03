@@ -276,48 +276,128 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-           
+
             <div class="col-lg-12 stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Seller Table</h4>
-                 
-                 <div class="table-responsive pt-3">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Seller Name</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Mobile</th>
-        <th>Status</th>
-        <th>Details</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-info">
-        {% for s in seller %}
-        <td>{{s.id}}</td>
-        <td>{{s.seller_name}}</td>
-        <td>{{s.user.email}}</td>
-        <td>{{s.address}}</td>
-        <td>{{s.phone_number}}</td>
-        <td>{{s.kyc_status}}</td>
-        <td>
 
- <a href="{% url 'seller_viewmore' s_id=s.id %}" class="btn btn-sm btn-primary">
-    View
-</a>
-         </td>
-        {% endfor %}
-      </tr>
+                <div class="col-lg-12 stretch-card">
 
-    </tbody>
-  </table>
+    <div class="card">
+  <div class="card-body">
+
+    <h4 class="card-title mb-4">Seller Details Review</h4>
+
+    <!-- BASIC DETAILS -->
+    <div class="mb-5">
+      <h5 class="font-weight-bold text-primary mb-3">Basic Details</h5>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">Full Name</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">{{ seller.seller_name }}</div>
+      </div>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">Email</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">{{ seller.user.email }}</div>
+      </div>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">Mobile</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">{{ seller.phone_number }}</div>
+      </div>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">Address</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">{{ seller.address }}</div>
+      </div>
+    </div>
+
+    <!-- IDENTITY DETAILS -->
+    <div class="mb-5">
+      <h5 class="font-weight-bold text-info mb-3">Identity Details</h5>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">PAN Number</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">{{ seller.pan_number }}</div>
+      </div>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">Aadhar Number</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">{{ seller.aadhar_number }}</div>
+      </div>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">PAN Card</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">
+          <a href="{{ seller.pan_card_image.url }}" target="_blank" class="btn btn-sm btn-outline-primary">
+            View PAN Card
+          </a>
+        </div>
+      </div>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">Aadhar Card</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">
+          <a href="{{ seller.aadhar_image.url }}" target="_blank" class="btn btn-sm btn-outline-primary">
+            View Aadhar
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BANK DETAILS -->
+    <div class="mb-5">
+      <h5 class="font-weight-bold text-success mb-3">Bank Details</h5>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">Account Holder</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">{{ seller.bank_account_holder_name }}</div>
+      </div>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">Account Number</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">{{ seller.bank_account_number }}</div>
+      </div>
+
+      <div class="row py-2 border-bottom">
+        <div class="col-md-3 font-weight-bold">IFSC Code</div>
+        <div class="col-md-1 text-center">:</div>
+        <div class="col-md-8">{{ seller.bank_ifsc }}</div>
+      </div>
+    </div>
+
+    <!-- APPROVE BUTTON -->
+    <div class="text-center mt-4">
+      {% if seller.kyc_status != "Approved" %}
+      <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success btn-lg px-5">
+          Approve Seller
+        </button>
+      </form>
+      {% else %}
+        <span class="badge bg-success p-3">
+          Seller Already Approved
+        </span>
+      {% endif %}
+    </div>
+
+  </div>
 </div>
-                </div>
-              </div>
+
+</div>
+
+
+
             </div>
           </div>
         </div>
@@ -342,7 +422,7 @@
   </div>
   <!-- container-scroller -->
   <!-- base:js -->
- 
+
   <!-- base:js -->
   <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
   <!-- endinject -->

@@ -1,693 +1,589 @@
 
 <!DOCTYPE html>
 {% load static %}
-<html lang="zxx">
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
-  <meta name="author" content="themefisher.com">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
-  <title>Novena- Health & Care Medical template</title>
+	<!-- title -->
+	<title>Fruitkha - Slider Version</title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="{% static 'accounts/images/favicon.ico' %}" />
-
-  <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="{% static 'accounts/plugins/bootstrap/css/bootstrap.min.css' %} ">
-  <!-- Icon Font Css -->
-  <link rel="stylesheet" href="{% static 'accounts/plugins/icofont/icofont.min.css' %}">
-  <!-- Slick Slider  CSS -->
-  <link rel="stylesheet" href="{% static 'accounts/plugins/slick-carousel/slick/slick.css' %}">
-  <link rel="stylesheet" href="{% static 'accounts/plugins/slick-carousel/slick/slick-theme.css' %}">
-
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="{% static 'accounts/assets/img/favicon.png' %}">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'accounts/assets/css/all.min.css' %}">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'accounts/assets/bootstrap/css/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'accounts/assets/css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'accounts/assets/css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'accounts/assets/css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'accounts/assets/css/meanmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'accounts/assets/css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'accounts/assets/css/responsive.css' %}">
 
 </head>
 
-<body id="top">
+<body>
 
-<header>
-	<div class="header-top-bar">
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
 		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-6">
-					<ul class="top-bar-info list-inline-item pl-0 mb-0">
-						<li class="list-inline-item"><a href="mailto:support@gmail.com"><i class="icofont-support-faq mr-2"></i>support@novena.com</a></li>
-						<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>Address Ta-134/A, New York, USA </li>
-					</ul>
-				</div>
-				<div class="col-lg-6">
-					<div class="text-lg-right top-right-bar mt-2 mt-lg-0">
-						<a href="tel:+23-345-67890" >
-							<span>Call Now : </span>
-							<span class="h4">823-4565-13456</span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<nav class="navbar navbar-expand-lg navigation" id="navbar">
-		<div class="container">
-		 	 <a class="navbar-brand" href="index.html">
-			  	<img src="{% static 'accounts/images/logo.png' %}" alt="" class="img-fluid">
-			  </a>
-
-		  	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="icofont-navigation-menu"></span>
-		  </button>
-	  
-		  <div class="collapse navbar-collapse" id="navbarmain">
-			<ul class="navbar-nav ml-auto">
-			  <li class="nav-item active">
-				<a class="nav-link" href="index.html">Home</a>
-			  </li>
-			   <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-			    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
-
-			    <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown02">
-						<li><a class="dropdown-item" href="department.html">Departments</a></li>
-						<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
-					</ul>
-			  	</li>
-
-			  	<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown03">
-						<li><a class="dropdown-item" href="doctor.html">Doctors</a></li>
-						<li><a class="dropdown-item" href="doctor-single.html">Doctor Single</a></li>
-						<li><a class="dropdown-item" href="appoinment.html">Appoinment</a></li>
-					</ul>
-			  	</li>
-
-			   <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown05">
-						<li><a class="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a></li>
-
-						<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-					</ul>
-			  	</li>
-			   <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-			</ul>
-		  </div>
-		</div>
-	</nav>
-</header>
-	
-
-
-
-<!-- Slider Start -->
-<section class="banner">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 col-md-12 col-xl-7">
-				<div class="block">
-					<div class="divider mb-3"></div>
-					<span class="text-uppercase text-sm letter-spacing ">Total Health care solution</span>
-					<h1 class="mb-3 mt-3">Your most trusted health partner</h1>
-					
-					<p class="mb-4 pr-5">A repudiandae ipsam labore ipsa voluptatum quidem quae laudantium quisquam aperiam maiores sunt fugit, deserunt rem suscipit placeat.</p>
-					<div class="btn-container ">
-						<a href="appoinment.html" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Make appoinment <i class="icofont-simple-right ml-2  "></i></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="features">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="feature-block d-lg-flex">
-					<div class="feature-item mb-5 mb-lg-0">
-						<div class="feature-icon mb-4">
-							<i class="icofont-surgeon-alt"></i>
-						</div>
-						<span>24 Hours Service</span>
-						<h4 class="mb-3">Online Appoinment</h4>
-						<p class="mb-4">Get ALl time support for emergency.We have introduced the principle of family medicine.</p>
-						<a href="appoinment.html" class="btn btn-main btn-round-full">Make a appoinment</a>
-					</div>
-				
-					<div class="feature-item mb-5 mb-lg-0">
-						<div class="feature-icon mb-4">
-							<i class="icofont-ui-clock"></i>
-						</div>
-						<span>Timing schedule</span>
-						<h4 class="mb-3">Working Hours</h4>
-						<ul class="w-hours list-unstyled">
-		                    <li class="d-flex justify-content-between">Sun - Wed : <span>8:00 - 17:00</span></li>
-		                    <li class="d-flex justify-content-between">Thu - Fri : <span>9:00 - 17:00</span></li>
-		                    <li class="d-flex justify-content-between">Sat - sun : <span>10:00 - 17:00</span></li>
-		                </ul>
-					</div>
-				
-					<div class="feature-item mb-5 mb-lg-0">
-						<div class="feature-icon mb-4">
-							<i class="icofont-support"></i>
-						</div>
-						<span>Emegency Cases</span>
-						<h4 class="mb-3">1-800-700-6200</h4>
-						<p>Get ALl time support for emergency.We have introduced the principle of family medicine.Get Conneted with us for any urgency .</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-
-<section class="section about">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-4 col-sm-6">
-				<div class="about-img">
-					<img src="{% static 'accounts/images/about/img-1.jpg' %}" alt="" class="img-fluid">
-					<img src="{% static 'accounts/images/about/img-2.jpg' %}" alt="" class="img-fluid mt-4">
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6">
-				<div class="about-img mt-4 mt-lg-0">
-					<img src="{% static 'accounts/images/about/img-3.jpg' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="about-content pl-4 mt-4 mt-lg-0">
-					<h2 class="title-color">Personal care <br>& healthy living</h2>
-					<p class="mt-4 mb-5">We provide best leading medicle service Nulla perferendis veniam deleniti ipsum officia dolores repellat laudantium obcaecati neque.</p>
-
-					<a href="service.html" class="btn btn-main-2 btn-round-full btn-icon">Services<i class="icofont-simple-right ml-3"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="cta-section ">
-	<div class="container">
-		<div class="cta position-relative">
 			<div class="row">
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="counter-stat">
-						<i class="icofont-doctor"></i>
-						<span class="h3">58</span>k
-						<p>Happy People</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="counter-stat">
-						<i class="icofont-flag"></i>
-						<span class="h3">700</span>+
-						<p>Surgery Comepleted</p>
-					</div>
-				</div>
-				
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="counter-stat">
-						<i class="icofont-badge"></i>
-						<span class="h3">40</span>+
-						<p>Expert Doctors</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="counter-stat">
-						<i class="icofont-globe"></i>
-						<span class="h3">20</span>
-						<p>Worldwide Branch</p>
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="index.html">
+								<img src="{% static 'accounts/assets/img/logo.png' %}" alt="">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li class="current-list-item"><a href="{% url 'buyer_dashboard' %}">Home</a>
+
+
+								</li>
+								<li><a href="{% url 'about' %}">About</a></li>
+								<li><a href="#">Auctions</a>
+									<ul class="sub-menu">
+										<li><a href="{% url 'active_auctions' %}">Active Auctions</a></li>
+										<li><a href="#">Past Auctions</a></li>
+									</ul>
+								</li>
+								<li><a href="news.html">News</a>
+									<ul class="sub-menu">
+										<li><a href="news.html">News</a></li>
+										<li><a href="single-news.html">Single News</a></li>
+									</ul>
+								</li>
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="shop.html">Shop</a>
+									<ul class="sub-menu">
+										<li><a href="shop.html">Shop</a></li>
+										<li><a href="checkout.html">Check Out</a></li>
+										<li><a href="single-product.html">Single Product</a></li>
+										<li><a href="cart.html">Cart</a></li>
+									</ul>
+								</li>
+								<li>
+									<div class="header-icons">
+										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+									</div>
+								</li>
+							</ul>
+						</nav>
+						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</section>
-<section class="section service gray-bg">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-7 text-center">
-				<div class="section-title">
-					<h2>Award winning patient care</h2>
-					<div class="divider mx-auto my-4"></div>
-					<p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
-				</div>
-			</div>
-		</div>
+	<!-- end header -->
 
-		<div class="row">
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-4">
-					<div class="icon d-flex align-items-center">
-						<i class="icofont-laboratory text-lg"></i>
-						<h4 class="mt-3 mb-3">Laboratory services</h4>
-					</div>
-
-					<div class="content">
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-4">
-					<div class="icon d-flex align-items-center">
-						<i class="icofont-heart-beat-alt text-lg"></i>
-						<h4 class="mt-3 mb-3">Heart Disease</h4>
-					</div>
-					<div class="content">
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-4">
-					<div class="icon d-flex align-items-center">
-						<i class="icofont-tooth text-lg"></i>
-						<h4 class="mt-3 mb-3">Dental Care</h4>
-					</div>
-					<div class="content">
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-4">
-					<div class="icon d-flex align-items-center">
-						<i class="icofont-crutch text-lg"></i>
-						<h4 class="mt-3 mb-3">Body Surgery</h4>
-					</div>
-
-					<div class="content">
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-4">
-					<div class="icon d-flex align-items-center">
-						<i class="icofont-brain-alt text-lg"></i>
-						<h4 class="mt-3 mb-3">Neurology Sargery</h4>
-					</div>
-					<div class="content">
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-item mb-4">
-					<div class="icon d-flex align-items-center">
-						<i class="icofont-dna-alt-1 text-lg"></i>
-						<h4 class="mt-3 mb-3">Gynecology</h4>
-					</div>
-					<div class="content">
-						<p class="mb-4">Saepe nulla praesentium eaque omnis perferendis a doloremque.</p>
+	<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Search For:</h3>
+							<input type="text" placeholder="Keywords">
+							<button type="submit">Search <i class="fas fa-search"></i></button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</section>
-<section class="section appoinment">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-6 ">
-				<div class="appoinment-content">
-					<img src="{% static 'accounts/images/about/img-3.jpg' %}" alt="" class="img-fluid">
-					<div class="emergency">
-						<h2 class="text-lg"><i class="icofont-phone-circle text-lg"></i>+23 345 67980</h2>
+	<!-- end search area -->
+
+	<!-- home page slider -->
+	<div class="homepage-slider">
+		<!-- single home slider -->
+		<div class="single-homepage-slider homepage-bg-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-7 offset-lg-1 offset-xl-0">
+						<div class="hero-text">
+							<div class="hero-text-tablecell">
+								<p class="subtitle">Fresh & Organic</p>
+								<h1>Delicious Seasonal Fruits</h1>
+								<div class="hero-btns">
+									<a href="shop.html" class="boxed-btn">Fruit Collection</a>
+									<a href="contact.html" class="bordered-btn">Contact Us</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-6 col-md-10 ">
-				<div class="appoinment-wrap mt-5 mt-lg-0">
-					<h2 class="mb-2 title-color">Book appoinment</h2>
-					<p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.</p>
-					     <form id="#" class="appoinment-form" method="post" action="#">
-                    <div class="row">
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>Choose Department</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                  <option>Select Doctors</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
-                                </select>
-                            </div>
-                        </div>
+		</div>
+		<!-- single home slider -->
+		<div class="single-homepage-slider homepage-bg-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1 text-center">
+						<div class="hero-text">
+							<div class="hero-text-tablecell">
+								<p class="subtitle">Fresh Everyday</p>
+								<h1>100% Organic Collection</h1>
+								<div class="hero-btns">
+									<a href="shop.html" class="boxed-btn">Visit Shop</a>
+									<a href="contact.html" class="bordered-btn">Contact Us</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- single home slider -->
+		<div class="single-homepage-slider homepage-bg-3">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1 text-right">
+						<div class="hero-text">
+							<div class="hero-text-tablecell">
+								<p class="subtitle">Mega Sale Going On!</p>
+								<h1>Get December Discount</h1>
+								<div class="hero-btns">
+									<a href="shop.html" class="boxed-btn">Visit Shop</a>
+									<a href="contact.html" class="bordered-btn">Contact Us</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end home page slider -->
 
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
-                            </div>
-                        </div>
+	<!-- features list section -->
+	<div class="list-section pt-80 pb-80">
+		<div class="container">
 
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="time" id="time" type="text" class="form-control" placeholder="Time">
-                            </div>
-                        </div>
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="name" id="name" type="text" class="form-control" placeholder="Full Name">
-                            </div>
-                        </div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+					<div class="list-box d-flex align-items-center">
+						<div class="list-icon">
+							<i class="fas fa-shipping-fast"></i>
+						</div>
+						<div class="content">
+							<h3>Free Shipping</h3>
+							<p>When order over $75</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+					<div class="list-box d-flex align-items-center">
+						<div class="list-icon">
+							<i class="fas fa-phone-volume"></i>
+						</div>
+						<div class="content">
+							<h3>24/7 Support</h3>
+							<p>Get support all day</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="list-box d-flex justify-content-start align-items-center">
+						<div class="list-icon">
+							<i class="fas fa-sync"></i>
+						</div>
+						<div class="content">
+							<h3>Refund</h3>
+							<p>Get refund within 3 days!</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="phone" id="phone" type="Number" class="form-control" placeholder="Phone Number">
+		</div>
+	</div>
+	<!-- end features list section -->
+
+	<!-- product section -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">
+						<h3><span class="orange-text">Our</span> Products</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{% static 'accounts/assets/img/products/product-img-1.jpg' %}" alt=""></a>
+						</div>
+						<h3>Strawberry</h3>
+						<p class="product-price"><span>Per Kg</span> 85$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{% static 'accounts/assets/img/products/product-img-2.jpg' %}" alt=""></a>
+						</div>
+						<h3>Berry</h3>
+						<p class="product-price"><span>Per Kg</span> 70$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="{% static 'accounts/assets/img/products/product-img-3.jpg' %}" alt=""></a>
+						</div>
+						<h3>Lemon</h3>
+						<p class="product-price"><span>Per Kg</span> 35$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end product section -->
+
+	<!-- cart banner section -->
+	<section class="cart-banner pt-100 pb-100">
+    	<div class="container">
+        	<div class="row clearfix">
+            	<!--Image Column-->
+            	<div class="image-column col-lg-6">
+                	<div class="image">
+                    	<div class="price-box">
+                        	<div class="inner-price">
+                                <span class="price">
+                                    <strong>30%</strong> <br> off per kg
+                                </span>
                             </div>
                         </div>
+                    	<img src="{% static 'accounts/assets/img/a.jpg' %}" alt="">
                     </div>
-                    <div class="form-group-2 mb-4">
-                        <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
-                    </div>
-
-                    <a class="btn btn-main btn-round-full" href="appoinment.html" >Make Appoinment <i class="icofont-simple-right ml-2  "></i></a>
-                </form>
+                </div>
+                <!--Content Column-->
+                <div class="content-column col-lg-6">
+					<h3><span class="orange-text">Deal</span> of the month</h3>
+                    <h4>Hikan Strwaberry</h4>
+                    <div class="text">Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam similique! Beatae, minima quisquam molestias facere ea. Perspiciatis unde omnis iste natus error sit voluptatem accusant</div>
+                    <!--Countdown Timer-->
+                    <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2020/2/01"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
+                	<a href="cart.html" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                </div>
             </div>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="section testimonial-2 gray-bg">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-7">
-				<div class="section-title text-center">
-					<h2>We served over 5000+ Patients</h2>
-					<div class="divider mx-auto my-4"></div>
-					<p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+        </div>
+    </section>
+    <!-- end cart banner section -->
 
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-12 testimonial-wrap-2">
-				<div class="testimonial-block style-2  gray-bg">
-					<i class="icofont-quote-right"></i>
-
-					<div class="testimonial-thumb">
-						<img src="{% static 'accounts/images/team/test-thumb1.jpg' %}" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info ">
-						<h4>Amazing service!</h4>
-						<span>John Partho</span>
-						<p>
-							They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-						</p>
-					</div>
-				</div>
-
-				<div class="testimonial-block style-2  gray-bg">
-					<div class="testimonial-thumb">
-						<img src="{% static 'accounts/images/team/test-thumb2.jpg' %}" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info">
-						<h4>Expert doctors!</h4>
-						<span>Mullar Sarth</span>
-						<p>
-							They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-						</p>
-					</div>
-					
-					<i class="icofont-quote-right"></i>
-				</div>
-
-				<div class="testimonial-block style-2  gray-bg">
-					<div class="testimonial-thumb">
-						<img src="{% static 'accounts/images/team/test-thumb3.jpg' %}" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info">
-						<h4>Good Support!</h4>
-						<span>Kolis Mullar</span>
-						<p>
-							They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-						</p>
-					</div>
-					
-					<i class="icofont-quote-right"></i>
-				</div>
-
-				<div class="testimonial-block style-2  gray-bg">
-					<div class="testimonial-thumb">
-						<img src="{% static 'accounts/images/team/test-thumb4.jpg' %}" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info">
-						<h4>Nice Environment!</h4>
-						<span>Partho Sarothi</span>
-						<p class="mt-4">
-							They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-						</p>
-					</div>
-					<i class="icofont-quote-right"></i>
-				</div>
-
-				<div class="testimonial-block style-2  gray-bg">
-					<div class="testimonial-thumb">
-						<img src="{% static 'accounts/images/team/test-thumb1.jpg' %}" alt="" class="img-fluid">
-					</div>
-
-					<div class="client-info">
-						<h4>Modern Service!</h4>
-						<span>Kolis Mullar</span>
-						<p>
-							They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat.
-						</p>
-					</div>
-					<i class="icofont-quote-right"></i>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="section clients">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-7">
-				<div class="section-title text-center">
-					<h2>Partners who support us</h2>
-					<div class="divider mx-auto my-4"></div>
-					<p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="row clients-logo">
-			<div class="col-lg-2">
-				<div class="client-thumb">
-					<img src="{% static 'accounts/images/about/1.png' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="client-thumb">
-					<img src="{% static 'accounts/images/about/2.png' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="client-thumb">
-					<img src="{% static 'accounts/images/about/3.png' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="client-thumb">
-					<img src="{% static 'accounts/images/about/4.png' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="client-thumb">
-					<img src="{% static 'accounts/images/about/5.png' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="client-thumb">
-					<img src="{% static 'accounts/images/about/6.png' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="client-thumb">
-					<img src="{% static 'accounts/images/about/3.png' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="client-thumb">
-					<img src="{% static 'accounts/images/about/4.png' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="client-thumb">
-					<img src="{% static 'accounts/images/about/5.png' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="client-thumb">
-					<img src="{% static 'accounts/images/about/6.png' %}" alt="" class="img-fluid">
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- footer Start -->
-<footer class="footer section gray-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 mr-auto col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<div class="logo mb-4">
-						<img src="{% static 'accounts/images/logo.png' %}" alt="" class="img-fluid">
-					</div>
-					<p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
-
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i class="icofont-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="icofont-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-2 col-md-6 col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Department</h4>
-					<div class="divider mb-4"></div>
-
-					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="#">Surgery </a></li>
-						<li><a href="#">Wome's Health</a></li>
-						<li><a href="#">Radiology</a></li>
-						<li><a href="#">Cardioc</a></li>
-						<li><a href="#">Medicine</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-2 col-md-6 col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Support</h4>
-					<div class="divider mb-4"></div>
-
-					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="#">Terms & Conditions</a></li>
-						<li><a href="#">Privacy Policy</a></li>
-						<li><a href="#">Company Support </a></li>
-						<li><a href="#">FAQuestions</a></li>
-						<li><a href="#">Company Licence</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="widget widget-contact mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Get in Touch</h4>
-					<div class="divider mb-4"></div>
-
-					<div class="footer-contact-block mb-4">
-						<div class="icon d-flex align-items-center">
-							<i class="icofont-email mr-3"></i>
-							<span class="h6 mb-0">Support Available for 24/7</span>
+	<!-- testimonail-section -->
+	<div class="testimonail-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1 text-center">
+					<div class="testimonial-sliders">
+						<div class="single-testimonial-slider">
+							<div class="client-avater">
+								<img src="{% static 'accounts/assets/img/avaters/avatar1.png' %}" alt="">
+							</div>
+							<div class="client-meta">
+								<h3>Saira Hakim <span>Local shop owner</span></h3>
+								<p class="testimonial-body">
+									" Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+								</p>
+								<div class="last-icon">
+									<i class="fas fa-quote-right"></i>
+								</div>
+							</div>
 						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">Support@email.com</a></h4>
-					</div>
-
-					<div class="footer-contact-block">
-						<div class="icon d-flex align-items-center">
-							<i class="icofont-support mr-3"></i>
-							<span class="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
+						<div class="single-testimonial-slider">
+							<div class="client-avater">
+								<img src="{% static 'accounts/assets/img/avaters/avatar2.png' %}" alt="">
+							</div>
+							<div class="client-meta">
+								<h3>David Niph <span>Local shop owner</span></h3>
+								<p class="testimonial-body">
+									" Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+								</p>
+								<div class="last-icon">
+									<i class="fas fa-quote-right"></i>
+								</div>
+							</div>
 						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">+23-456-6588</a></h4>
+						<div class="single-testimonial-slider">
+							<div class="client-avater">
+								<img src="{% static 'accounts/assets/img/avaters/avatar3.png' %}" alt="">
+							</div>
+							<div class="client-meta">
+								<h3>Jacob Sikim <span>Local shop owner</span></h3>
+								<p class="testimonial-body">
+									" Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+								</p>
+								<div class="last-icon">
+									<i class="fas fa-quote-right"></i>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<div class="footer-btm py-4 mt-5">
-			<div class="row align-items-center justify-content-between">
-				<div class="col-lg-6">
-					<div class="copyright">
-						&copy; Copyright Reserved to <span class="text-color">Novena</span> by <a href="https://themefisher.com/" target="_blank">Themefisher</a>
+	</div>
+	<!-- end testimonail-section -->
+
+	<!-- advertisement section -->
+	<div class="abt-section mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-bg">
+						<a href="https://www.youtube.com/watch?v=DBLlFWYcIGQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
 					</div>
 				</div>
-				<div class="col-lg-6">
-					<div class="subscribe-form text-lg-right mt-5 mt-lg-0">
-						<form action="#" class="subscribe">
-							<input type="text" class="form-control" placeholder="Your Email address">
-							<a href="#" class="btn btn-main-2 btn-round-full">Subscribe</a>
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-text">
+						<p class="top-sub">Since Year 1999</p>
+						<h2>We are <span class="orange-text">Fruitkha</span></h2>
+						<p>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
+						<a href="about.html" class="boxed-btn mt-4">know more</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end advertisement section -->
+
+	<!-- shop banner -->
+	<section class="shop-banner">
+    	<div class="container">
+        	<h3>December sale is on! <br> with big <span class="orange-text">Discount...</span></h3>
+            <div class="sale-percent"><span>Sale! <br> Upto</span>50% <span>off</span></div>
+            <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
+        </div>
+    </section>
+	<!-- end shop banner -->
+
+	<!-- latest news -->
+	<div class="latest-news pt-150 pb-150">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">
+						<h3><span class="orange-text">Our</span> News</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<div class="news-text-box">
+							<h3><a href="single-news.html">You will vainly look for fruit on it in autumn.</a></h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+							</p>
+							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
+							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<a href="single-news.html"><div class="latest-news-bg news-bg-2"></div></a>
+						<div class="news-text-box">
+							<h3><a href="single-news.html">A man's worth has its season, like tomato.</a></h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+							</p>
+							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
+							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
+					<div class="single-latest-news">
+						<a href="single-news.html"><div class="latest-news-bg news-bg-3"></div></a>
+						<div class="news-text-box">
+							<h3><a href="single-news.html">Good thoughts bear good fresh juicy fruit.</a></h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+							</p>
+							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
+							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<a href="news.html" class="boxed-btn">More News</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end latest news -->
+
+	<!-- logo carousel -->
+	<div class="logo-carousel-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="logo-carousel-inner">
+						<div class="single-logo-item">
+							<img src="{% static 'accounts/assets/img/company-logos/1.png' %}" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="{% static 'accounts/assets/img/company-logos/2.png' %}" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="{% static 'accounts/assets/img/company-logos/3.png' %}" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="{% static 'accounts/assets/img/company-logos/4.png' %}" alt="">
+						</div>
+						<div class="single-logo-item">
+							<img src="{% static 'accounts/assets/img/company-logos/5.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end logo carousel -->
+
+	<!-- footer -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">About us</h2>
+						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Get in Touch</h2>
+						<ul>
+							<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
+							<li>support@fruitkha.com</li>
+							<li>+00 111 222 3333</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Pages</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="services.html">Shop</a></li>
+							<li><a href="news.html">News</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box subscribe">
+						<h2 class="widget-title">Subscribe</h2>
+						<p>Subscribe to our mailing list to get the latest updates.</p>
+						<form action="index.html">
+							<input type="email" placeholder="Email">
+							<button type="submit"><i class="fas fa-paper-plane"></i></button>
 						</form>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<!-- end footer -->
 
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
 			<div class="row">
-				<div class="col-lg-4">
-					<a class="backtop js-scroll-trigger" href="#top">
-						<i class="icofont-long-arrow-up"></i>
-					</a>
+				<div class="col-lg-6 col-md-12">
+					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.<br>
+						Distributed By - <a href="https://themewagon.com/">Themewagon</a>
+					</p>
+				</div>
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</footer>
+	<!-- end copyright -->
 
-   
+	<!-- jquery -->
+	<script src="{% static 'accounts/assets/js/jquery-1.11.3.min.js' %}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'accounts/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<!-- count down -->
+	<script src="{% static 'accounts/assets/js/jquery.countdown.js' %}"></script>
+	<!-- isotope -->
+	<script src="{% static 'accounts/assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+	<!-- waypoints -->
+	<script src="{% static 'accounts/assets/js/waypoints.js' %}"></script>
+	<!-- owl carousel -->
+	<script src="{% static 'accounts/assets/js/owl.carousel.min.js' %}"></script>
+	<!-- magnific popup -->
+	<script src="{% static 'accounts/assets/js/jquery.magnific-popup.min.js' %}"></script>
+	<!-- mean menu -->
+	<script src="{% static 'accounts/assets/js/jquery.meanmenu.min.js' %}"></script>
+	<!-- sticker js -->
+	<script src="{% static 'accounts/assets/js/sticker.js' %}"></script>
+	<!-- main js -->
+	<script src="{% static 'accounts/assets/js/main.js' %}"></script>
 
-    <!-- 
-    Essential Scripts
-    =====================================-->
-
-    
-    <!-- Main jQuery -->
-    <script src="{% static 'accounts/plugins/jquery/jquery.js' %}"></script>
-    <!-- Bootstrap 4.3.2 -->
-    <script src="{% static 'accounts/plugins/bootstrap/js/popper.js' %}"></script>
-    <script src="{% static 'accounts/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'accounts/plugins/counterup/jquery.easing.js' %}"></script>
-    <!-- Slick Slider -->
-    <script src="{% static 'accounts/plugins/slick-carousel/slick/slick.min.js' %}"></script>
-    <!-- Counterup -->
-    <script src="{% static 'accounts/plugins/counterup/jquery.waypoints.min.js' %}"></script>
-    
-    <script src="{% static 'accounts/plugins/shuffle/shuffle.min.js' %}"></script>
-    <script src="{% static 'accounts/plugins/counterup/jquery.counterup.min.js' %}"></script>
-    <!-- Google Map -->
-    <script src="{% static 'accounts/plugins/google-map/map.js' %}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
-    
-    <script src="{% static 'accounts/js/script.js' %}"></script>
-    <script src="{% static 'accounts/js/contact.js' %}"></script>
-
-  </body>
-  </html>
-   
+</body>
+</html>

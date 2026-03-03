@@ -5,5 +5,6 @@ urlpatterns=[
         path('dashboard/',views.dashboard,name='dashboard'),
         path('view_seller/',views.view_seller,name='view_seller'),
         path('view_buyer/',views.view_buyer,name='view_buyer'),
+        path('seller_viewmore/<int:s_id>/', views.seller_viewmore, name='seller_viewmore'),
 
 ]

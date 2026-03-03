@@ -4,7 +4,12 @@ from Accounts_app import views
 urlpatterns=[
     path('registration/',views.registration,name='registration'),
     path('save_register_data/',views.save_register_data,name='save_register_data'),
+
     path('seller_dashboard/',views.seller_dashboard,name='seller_dashboard'),
+    path('about/', views.about, name='about'),
+    path('active_auctions/', views.active_auctions, name='active_auctions'),
+    path('active_auction_viewmore/', views.active_auction_viewmore, name='active_auction_viewmore'),
+
     path('buyer_dashboard/',views.buyer_dashboard,name='buyer_dashboard'),
     path('login_user/',views.login_user,name='login_user'),
     path('kyc_form/',views.kyc_form,name='kyc_form'),
