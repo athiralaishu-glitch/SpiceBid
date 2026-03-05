@@ -188,7 +188,7 @@
 
                 <p><strong>Starting Price:</strong> ₹ {{ auction.starting_price }}</p>
 
-                <a href="{% url 'active_auction_viewmore' %}"
+                <a href="{% url 'active_auction_viewmore' a_id=auction.id %}"
                    class="read-more-btn">
                     View Auction <i class="fas fa-angle-right"></i>
                 </a>

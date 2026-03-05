@@ -1,8 +1,11 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth import authenticate,login
 from django.contrib import messages
 from django.utils import timezone
 from Auction_app.models import *
+from Bid_app.models import *
+from django.contrib.auth.decorators import login_required
+from decimal import Decimal,InvalidOperation
 
 from Accounts_app.models import *
 from Adminapp import views
@@ -99,12 +102,42 @@ def active_auctions(request):
         "auctions": auctions
     })
 
-def active_auction_viewmore(request):
-    return render(request,'active_auction_viewmore.html')
+def active_auction_viewmore(request, a_id):
+    auction = get_object_or_404(AuctionDB, id=a_id)
 
 
+    now = timezone.localtime()
 
+    # You can still pass is_live to template if needed
+    is_live = auction.is_live
+    highest_bid = auction.bids.order_by('-amount').first()
 
+    if highest_bid:
+        current_highest = highest_bid.amount
+    else:
+        current_highest = auction.starting_price
+
+    return render(request, 'active_auction_viewmore.html', {
+        'auction': auction,
+        'is_live': is_live,
+        'current_highest': current_highest,
+        'highest_bid': highest_bid
+    })
+
+#-----------------------------------------------------------------------------------------------------------------------------------
+
+def save_bid(request, auction_id):
+    if request.method == "POST":
+        auction = AuctionDB.objects.get(id=auction_id)
+        bid_price = Decimal(request.POST.get("bid_price"))
+
+        Bid.objects.create(
+            auction=auction,
+            user=request.user,
+            amount=bid_price
+        )
+
+    return redirect("active_auction_viewmore", a_id=auction_id)
 
 
 #--------------------------------------------------------------------------------------------------------------------------------------

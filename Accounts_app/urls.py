@@ -8,7 +8,9 @@ urlpatterns=[
     path('seller_dashboard/',views.seller_dashboard,name='seller_dashboard'),
     path('about/', views.about, name='about'),
     path('active_auctions/', views.active_auctions, name='active_auctions'),
-    path('active_auction_viewmore/', views.active_auction_viewmore, name='active_auction_viewmore'),
+    path('active_auction_viewmore/<int:a_id>/', views.active_auction_viewmore, name='active_auction_viewmore'),
+
+    path('save_bid/<int:auction_id>/', views.save_bid, name='save_bid'),
 
     path('buyer_dashboard/',views.buyer_dashboard,name='buyer_dashboard'),
     path('login_user/',views.login_user,name='login_user'),

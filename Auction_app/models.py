@@ -17,3 +17,8 @@ class AuctionDB(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def is_live(self):
+        now = timezone.localtime(timezone.now())  # ensure timezone aware
+        return self.is_active and self.start_time <= now <= self.end_time
