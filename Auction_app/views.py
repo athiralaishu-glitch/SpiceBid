@@ -6,6 +6,7 @@ from django.utils import timezone
 from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 import logging
+from django.shortcuts import get_object_or_404
 
 
 
@@ -37,6 +38,28 @@ def save_auction(request):
         return redirect("seller_dashboard")
 
     return redirect("auction_registration")
+
+
+def edit_auction(request, auction_id):
+    auction = get_object_or_404(AuctionDB, id=auction_id, seller=request.user)
+    if request.method == "POST":
+        auction.title = request.POST.get("title")
+        auction.description = request.POST.get("description")
+        auction.starting_price = request.POST.get("starting_price")
+        auction.start_time = request.POST.get("start_time")
+        auction.end_time = request.POST.get("end_time")
+        if request.FILES.get("image"):
+            auction.image = request.FILES.get("image")
+        auction.save()
+        return redirect("seller_auctions")
+    return render(request, "edit_auction.html", {"auction": auction})
+
+def delete_auction(request, auction_id):
+    auction = get_object_or_404(AuctionDB, id=auction_id, seller=request.user)
+    if request.method == "POST":
+        auction.delete()
+        return redirect("seller_auctions")
+    return redirect("seller_auctions")
 
 
 def auction_detail(request, auction_id):

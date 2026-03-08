@@ -1,395 +1,293 @@
-
-<!DOCTYPE html>
+{% extends 'seller_base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
-	<!-- title -->
-	<title>Single Product</title>
+{% block tab_title %}My Profile{% endblock %}
+{% block page_title %}My Profile{% endblock %}
+{% block nav_account %}active{% endblock %}
 
-	<!-- favicon -->
-	<link rel="shortcut icon" type="image/png" href="{% static 'accounts/assets/img/favicon.png' %}">
-	<!-- google font -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/all.min.css' %}">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="{% static 'accounts/assets/bootstrap/css/bootstrap.min.css' %}">
-	<!-- owl carousel -->
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/owl.carousel.css' %}">
-	<!-- magnific popup -->
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/magnific-popup.css' %}">
-	<!-- animate css -->
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/animate.css' %}">
-	<!-- mean menu css -->
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/meanmenu.min.css' %}">
-	<!-- main style -->
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/main.css' %}">
-	<!-- responsive -->
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/responsive.css' %}">
+{% block extra_styles %}
+    .profile-avatar-wrap {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #fd7e14, #e65100);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0 auto 16px;
+        box-shadow: 0 8px 24px rgba(253,126,20,0.35);
+    }
+    .profile-left {
+        background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+        border-radius: 16px;
+        padding: 36px 28px;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 8px 32px rgba(26,26,46,0.18);
+        height: 100%;
+    }
+    .profile-left .seller-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 4px;
+    }
+    .profile-left .seller-role {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255,255,255,0.45);
+        margin-bottom: 20px;
+    }
+    .profile-left .seller-address {
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 24px;
+        line-height: 1.6;
+    }
+    .kyc-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 24px;
+    }
+    .kyc-badge.approved { background: rgba(46,125,50,0.25); color: #81c784; border: 1px solid rgba(129,199,132,0.3); }
+    .kyc-badge.rejected { background: rgba(198,40,40,0.25); color: #ef9a9a; border: 1px solid rgba(239,154,154,0.3); }
+    .kyc-badge.pending  { background: rgba(245,124,0,0.25); color: #ffb74d; border: 1px solid rgba(255,183,77,0.3); }
+    .btn-kyc {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--orange, #fd7e14);
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 25px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        transition: all 0.3s;
+    }
+    .btn-kyc:hover {
+        background: #fff;
+        color: var(--orange, #fd7e14);
+        text-decoration: none;
+        transform: translateY(-2px);
+    }
+    .profile-divider {
+        width: 40px;
+        height: 3px;
+        background: var(--orange, #fd7e14);
+        border-radius: 2px;
+        margin: 12px auto 20px;
+    }
 
+    /* Right card */
+    .profile-right {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        overflow: hidden;
+        height: 100%;
+    }
+    .profile-right .card-header-bar {
+        background: linear-gradient(135deg, #fd7e14, #e65100);
+        padding: 20px 28px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .profile-right .card-header-bar h4 {
+        color: #fff;
+        margin: 0;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.1rem;
+        font-weight: 900;
+    }
+    .profile-right .card-header-bar .header-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 0.9rem;
+    }
+    .profile-right .details-body { padding: 28px; }
+    .detail-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px 0;
+        border-bottom: 1px solid #f5f5f5;
+    }
+    .detail-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .detail-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: #fff3e0;
+        color: #fd7e14;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .detail-content .detail-label {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #bbb;
+        margin-bottom: 3px;
+    }
+    .detail-content .detail-value {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #1a1a2e;
+    }
+    .kyc-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.78rem;
+        font-weight: 700;
+    }
+    .kyc-pill.approved { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+    .kyc-pill.rejected { background: #fdecea; color: #c62828; border: 1px solid #ef9a9a; }
+    .kyc-pill.pending  { background: #fff8e1; color: #e65100; border: 1px solid #ffe082; }
+{% endblock %}
 
-</head>
-<body>
-	
-	<!--PreLoader-->
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
-        </div>
-    </div>
-    <!--PreLoader Ends-->
-	
-	<!-- header -->
-	<div class="top-header-area" id="sticker">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-sm-12 text-center">
-					<div class="main-menu-wrap">
-						<!-- logo -->
-						<div class="site-logo">
-							<a href="index.html">
-								<img src="assets/img/logo.png" alt="">
-							</a>
-						</div>
-						<!-- logo -->
-
-						<!-- menu start -->
-						<nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="#">Home</a>
-									<ul class="sub-menu">
-										<li><a href="index.html">Static Home</a></li>
-										<li><a href="index_2.html">Slider Home</a></li>
-									</ul>
-								</li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="#">Pages</a>
-									<ul class="sub-menu">
-										<li><a href="404.html">404 page</a></li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="contact.html">Contact</a></li>
-										<li><a href="news.html">News</a></li>
-										<li><a href="shop.html">Shop</a></li>
-									</ul>
-								</li>
-								<li><a href="news.html">News</a>
-									<ul class="sub-menu">
-										<li><a href="news.html">News</a></li>
-										<li><a href="single-news.html">Single News</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="shop.html">Shop</a>
-									<ul class="sub-menu">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-										<li><a href="cart.html">Cart</a></li>
-									</ul>
-								</li>
-								<li>
-									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-									</div>
-								</li>
-							</ul>
-						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-						<div class="mobile-menu"></div>
-						<!-- menu end -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end header -->
-
-	<!-- search area -->
-	<div class="search-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<span class="close-btn"><i class="fas fa-window-close"></i></span>
-					<div class="search-bar">
-						<div class="search-bar-tablecell">
-							<h3>Search For:</h3>
-							<input type="text" placeholder="Keywords">
-							<button type="submit">Search <i class="fas fa-search"></i></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end search arewa -->
-	
-	<!-- breadcrumb-section -->
-	<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<p>See more Details</p>
-						<h1>My Account</h1>
-<p>Manage Your Profile & KYC</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end breadcrumb section -->
-
-	<!-- my account section -->
-<div class="single-product mt-150 mb-150">
+{% block content %}
+<div class="page-body">
     <div class="container">
-        <div class="row">
+        <div class="row g-4">
 
-            <!-- LEFT PROFILE CARD -->
-            <div class="col-md-4">
-                <div class="card text-center p-4 shadow-sm">
-                    
-                    <div style="font-size:80px; color:#F28123;">
-                        <i class="fas fa-user-circle"></i>
+            <!-- LEFT: Profile Card -->
+            <div class="col-lg-4 col-md-5">
+                <div class="profile-left">
+
+                    <div class="profile-avatar-wrap">
+                        {{ seller.seller_name|slice:":1"|upper }}
                     </div>
 
-                    <h4 class="mt-3">{{ seller.seller_name }}</h4>
-                    <p class="text-muted">SpiceBid Seller</p>
-                    <p>{{ seller.address }}</p>
+                    <div class="seller-name">{{ seller.seller_name }}</div>
+                    <div class="seller-role">SpiceBid Seller</div>
+                    <div class="profile-divider"></div>
+                    <div class="seller-address">
+                        <i class="fas fa-map-marker-alt" style="color:#fd7e14; margin-right:6px;"></i>
+                        {{ seller.address }}
+                    </div>
 
-                    <a href="{% url 'kyc_form' %}" class="boxed-btn mt-2">
-                        Update KYC
+                    <!-- KYC Status Badge -->
+                    {% if seller.kyc_status == "Approved" %}
+                    <div class="kyc-badge approved">
+                        <i class="fas fa-check-circle"></i> KYC Approved
+                    </div>
+                    {% elif seller.kyc_status == "Rejected" %}
+                    <div class="kyc-badge rejected">
+                        <i class="fas fa-times-circle"></i> KYC Rejected
+                    </div>
+                    {% else %}
+                    <div class="kyc-badge pending">
+                        <i class="fas fa-hourglass-half"></i> KYC Pending
+                    </div>
+                    {% endif %}
+
+                    <br>
+                    <a href="{% url 'kyc_form' %}" class="btn-kyc">
+                        <i class="fas fa-id-card"></i> Update KYC
                     </a>
 
                 </div>
             </div>
 
-            <!-- RIGHT DETAILS -->
-           <div class="col-md-8">
-    <div class="card p-4 shadow-sm">
+            <!-- RIGHT: Details Card -->
+            <div class="col-lg-8 col-md-7">
+                <div class="profile-right">
 
-        <h3 class="mb-4">Account Details</h3>
+                    <div class="card-header-bar">
+                        <div class="header-icon"><i class="fas fa-user"></i></div>
+                        <h4>Account Details</h4>
+                    </div>
 
-        <div class="row mb-3">
-            <div class="col-4 fw-bold">Full Name</div>
-            <div class="col-8">{{ seller.seller_name }}</div>
-        </div>
-        <hr>
+                    <div class="details-body">
 
-        <div class="row mb-3">
-            <div class="col-4 fw-bold">Email</div>
-            <div class="col-8">{{ seller.user.email }}</div>
-        </div>
-        <hr>
+                        <div class="detail-row">
+                            <div class="detail-icon"><i class="fas fa-user"></i></div>
+                            <div class="detail-content">
+                                <div class="detail-label">Full Name</div>
+                                <div class="detail-value">{{ seller.seller_name }}</div>
+                            </div>
+                        </div>
 
-        <div class="row mb-3">
-            <div class="col-4 fw-bold">Phone</div>
-            <div class="col-8">{{ seller.phone_number }}</div>
-        </div>
-        <hr>
+                        <div class="detail-row">
+                            <div class="detail-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="detail-content">
+                                <div class="detail-label">Email Address</div>
+                                <div class="detail-value">{{ seller.user.email }}</div>
+                            </div>
+                        </div>
 
-        <div class="row mb-3">
-            <div class="col-4 fw-bold">Address</div>
-            <div class="col-8">{{ seller.address }}</div>
-        </div>
-        <hr>
+                        <div class="detail-row">
+                            <div class="detail-icon"><i class="fas fa-phone"></i></div>
+                            <div class="detail-content">
+                                <div class="detail-label">Phone Number</div>
+                                <div class="detail-value">{{ seller.phone_number }}</div>
+                            </div>
+                        </div>
 
-        <div class="row">
-            <div class="col-4 fw-bold">KYC Status</div>
-            <div class="col-8">
-                {% if seller.kyc_status == "Approved" %}
-                    <span class="text-success fw-bold">Approved ✅</span>
-                {% elif seller.kyc_status == "Rejected" %}
-                    <span class="text-danger fw-bold">Rejected ❌</span>
-                {% else %}
-                    <span class="text-warning fw-bold">Pending ⏳</span>
-                {% endif %}
+                        <div class="detail-row">
+                            <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="detail-content">
+                                <div class="detail-label">Address</div>
+                                <div class="detail-value">{{ seller.address }}</div>
+                            </div>
+                        </div>
+
+                        <div class="detail-row">
+                            <div class="detail-icon"><i class="fas fa-id-card"></i></div>
+                            <div class="detail-content">
+                                <div class="detail-label">KYC Status</div>
+                                <div class="detail-value">
+                                    {% if seller.kyc_status == "Approved" %}
+                                    <span class="kyc-pill approved">
+                                        <i class="fas fa-check-circle"></i> Approved
+                                    </span>
+                                    {% elif seller.kyc_status == "Rejected" %}
+                                    <span class="kyc-pill rejected">
+                                        <i class="fas fa-times-circle"></i> Rejected
+                                    </span>
+                                    {% else %}
+                                    <span class="kyc-pill pending">
+                                        <i class="fas fa-hourglass-half"></i> Pending
+                                    </span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div>
 
-    </div>
-</div>
         </div>
     </div>
 </div>
-<!-- end my account section -->
-
-	<!-- more products -->
-	<div class="more-products mb-150">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="section-title">	
-						<h3><span class="orange-text">Related</span> Products</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-						</div>
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-						</div>
-						<h3>Lemon</h3>
-						<p class="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end more products -->
-
-	<!-- logo carousel -->
-	<div class="logo-carousel-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="logo-carousel-inner">
-						<div class="single-logo-item">
-							<img src="assets/img/company-logos/1.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="assets/img/company-logos/2.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="assets/img/company-logos/3.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="assets/img/company-logos/4.png" alt="">
-						</div>
-						<div class="single-logo-item">
-							<img src="assets/img/company-logos/5.png" alt="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end logo carousel -->
-
-	<!-- footer -->
-	<div class="footer-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box about-widget">
-						<h2 class="widget-title">About us</h2>
-						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box get-in-touch">
-						<h2 class="widget-title">Get in Touch</h2>
-						<ul>
-							<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
-							<li>support@fruitkha.com</li>
-							<li>+00 111 222 3333</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box pages">
-						<h2 class="widget-title">Pages</h2>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="services.html">Shop</a></li>
-							<li><a href="news.html">News</a></li>
-							<li><a href="contact.html">Contact</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-box subscribe">
-						<h2 class="widget-title">Subscribe</h2>
-						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
-							<input type="email" placeholder="Email">
-							<button type="submit"><i class="fas fa-paper-plane"></i></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end footer -->
-	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.<br>
-						Distributed By - <a href="https://themewagon.com/">Themewagon</a>
-					</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
-	
-
-	<!-- jquery -->
-	<script src="{% static 'accounts/assets/js/jquery-1.11.3.min.js' %}"></script>
-	<!-- bootstrap -->
-	<script src="{% static 'accounts/assets/bootstrap/js/bootstrap.min.js' %}"></script>
-	<!-- count down -->
-	<script src="{% static 'accounts/assets/js/jquery.countdown.js' %}"></script>
-	<!-- isotope -->
-	<script src="{% static 'accounts/assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
-	<!-- waypoints -->
-	<script src="{% static 'accounts/assets/js/waypoints.js' %}"></script>
-	<!-- owl carousel -->
-	<script src="{% static 'accounts/assets/js/owl.carousel.min.js' %}"></script>
-	<!-- magnific popup -->
-	<script src="{% static 'accounts/assets/js/jquery.magnific-popup.min.js' %}"></script>
-	<!-- mean menu -->
-	<script src="{% static 'accounts/assets/js/jquery.meanmenu.min.js' %}"></script>
-	<!-- sticker js -->
-	<script src="{% static 'accounts/assets/js/sticker.js' %}"></script>
-	<!-- main js -->
-	<script src="{% static 'accounts/assets/js/main.js' %}"></script>
-
-</body>
-</html>
+{% endblock %}

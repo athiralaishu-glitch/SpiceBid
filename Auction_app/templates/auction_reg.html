@@ -1,197 +1,300 @@
-<!DOCTYPE html>
+{% extends 'seller_base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Auction Registration</title>
+{% block tab_title %}Create Auction{% endblock %}
+{% block page_title %}Create Auction{% endblock %}
+{% block nav_create %}active{% endblock %}
 
-	<link rel="shortcut icon" type="image/png" href="{% static 'accounts/assets/img/favicon.png' %}">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+{% block extra_styles %}
+    .form-card {
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+    .form-card-header {
+        background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 60%, #fd7e14 100%);
+        padding: 32px 40px;
+        position: relative;
+        overflow: hidden;
+    }
+    .form-card-header::before {
+        content: '🌶';
+        position: absolute;
+        right: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 4rem;
+        opacity: 0.1;
+    }
+    .form-card-header h2 {
+        font-family: 'Playfair Display', serif;
+        color: #fff;
+        font-size: 1.6rem;
+        font-weight: 900;
+        margin: 0 0 4px;
+    }
+    .form-card-header p {
+        color: rgba(255,255,255,0.55);
+        font-size: 0.88rem;
+        margin: 0;
+    }
+    .form-card-body { padding: 36px 40px; }
 
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/all.min.css' %}">
-	<link rel="stylesheet" href="{% static 'accounts/assets/bootstrap/css/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/main.css' %}">
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/responsive.css' %}">
-</head>
+    .form-section {
+        margin-bottom: 24px;
+    }
+    .form-label-custom {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: #555;
+        margin-bottom: 8px;
+    }
+    .form-label-custom .label-icon {
+        width: 26px;
+        height: 26px;
+        border-radius: 7px;
+        background: #fff3e0;
+        color: #fd7e14;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        flex-shrink: 0;
+    }
+    .form-control-custom {
+        width: 100%;
+        border: 2px solid #f0f0f0;
+        border-radius: 10px;
+        padding: 12px 16px;
+        font-size: 0.92rem;
+        color: #333;
+        background: #fafafa;
+        transition: all 0.25s;
+        outline: none;
+        font-family: 'DM Sans', sans-serif;
+    }
+    .form-control-custom:focus {
+        border-color: #fd7e14;
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(253,126,20,0.08);
+    }
+    textarea.form-control-custom { resize: vertical; min-height: 100px; }
 
-<body>
+    .date-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
 
-<!-- Header (same as My Account page) -->
-<div class="top-header-area" id="sticker">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<div class="main-menu-wrap">
-					<div class="site-logo">
-						<a href="#">
-							<img src="{% static 'accounts/assets/img/logo.png' %}" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    .image-upload-wrap {
+        border: 2px dashed #e0e0e0;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        background: #fafafa;
+        transition: border-color 0.25s;
+        cursor: pointer;
+    }
+    .image-upload-wrap:hover { border-color: #fd7e14; }
+    .image-upload-wrap i { font-size: 1.8rem; color: #ddd; display: block; margin-bottom: 8px; }
+    .image-upload-wrap p { font-size: 0.82rem; color: #aaa; margin: 0 0 10px; }
+    .image-upload-wrap input[type="file"] { display: none; }
+    .upload-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 18px;
+        border-radius: 20px;
+        background: #fff3e0;
+        color: #fd7e14;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1px solid #ffe0b2;
+    }
+    .upload-label:hover { background: #fd7e14; color: #fff; }
+
+    .form-divider {
+        height: 1px;
+        background: #f5f5f5;
+        margin: 28px 0;
+    }
+
+    .btn-submit {
+        width: 100%;
+        background: linear-gradient(135deg, #fd7e14, #e65100);
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        padding: 14px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    .btn-submit:hover {
+        background: linear-gradient(135deg, #1a1a2e, #0f3460);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(253,126,20,0.3);
+    }
+    .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 16px;
+        padding: 10px 22px;
+        border-radius: 25px;
+        background: #f5f5f5;
+        color: #666;
+        text-decoration: none;
+        font-size: 0.82rem;
+        font-weight: 600;
+        transition: all 0.2s;
+        width: 100%;
+        justify-content: center;
+    }
+    .btn-back:hover {
+        background: #1a1a2e;
+        color: #fff;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+    @media (max-width: 576px) {
+        .date-row { grid-template-columns: 1fr; }
+        .form-card-body { padding: 24px 20px; }
+        .form-card-header { padding: 24px 20px; }
+    }
+{% endblock %}
+
+{% block content %}
+<div class="page-body">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="form-card">
+
+                    <!-- Header -->
+                    <div class="form-card-header">
+                        <h2><i class="fas fa-gavel" style="margin-right:10px; color:#fd7e14;"></i>Create New Auction</h2>
+                        <p>Fill in the details below to list your spice for auction</p>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="form-card-body">
+                        <form method="POST" action="{% url 'save_auction' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <!-- Title -->
+                            <div class="form-section">
+                                <div class="form-label-custom">
+                                    <div class="label-icon"><i class="fas fa-tag"></i></div>
+                                    Auction Title
+                                </div>
+                                <input type="text" class="form-control-custom"
+                                       name="title" placeholder="Title" required>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="form-section">
+                                <div class="form-label-custom">
+                                    <div class="label-icon"><i class="fas fa-align-left"></i></div>
+                                    Description
+                                </div>
+                                <textarea class="form-control-custom" name="description" rows="3"
+                                          placeholder="Describe your spice — quality, origin, quantity..." required></textarea>
+                            </div>
+
+                            <!-- Starting Price -->
+                            <div class="form-section">
+                                <div class="form-label-custom">
+                                    <div class="label-icon"><i class="fas fa-rupee-sign"></i></div>
+                                    Starting Price (₹)
+                                </div>
+                                <input type="number" step="1" class="form-control-custom"
+                                       name="starting_price" placeholder="Enter price" required>
+                            </div>
+
+                            <!-- Image Upload -->
+                            <div class="form-section">
+                                <div class="form-label-custom">
+                                    <div class="label-icon"><i class="fas fa-image"></i></div>
+                                    Auction Image
+                                </div>
+                                <div class="image-upload-wrap" onclick="document.getElementById('imageInput').click()">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload a spice image</p>
+                                    <label class="upload-label">
+                                        <i class="fas fa-folder-open"></i> Browse File
+                                    </label>
+                                    <input type="file" id="imageInput" name="image" accept="image/*"
+                                           onchange="showFileName(this)">
+                                    <p id="file-name" style="margin-top:8px; font-size:0.8rem; color:#fd7e14;"></p>
+                                </div>
+                            </div>
+
+                            <div class="form-divider"></div>
+
+                            <!-- Date & Time Row -->
+                            <div class="date-row">
+                                <div class="form-section" style="margin-bottom:0;">
+                                    <div class="form-label-custom">
+                                        <div class="label-icon"><i class="fas fa-calendar-check"></i></div>
+                                        Start Date & Time
+                                    </div>
+                                    <input type="datetime-local" class="form-control-custom"
+                                           name="start_time" required>
+                                </div>
+                                <div class="form-section" style="margin-bottom:0;">
+                                    <div class="form-label-custom">
+                                        <div class="label-icon"><i class="fas fa-calendar-times"></i></div>
+                                        End Date & Time
+                                    </div>
+                                    <input type="datetime-local" class="form-control-custom"
+                                           name="end_time" required>
+                                </div>
+                            </div>
+
+                            <div class="form-divider"></div>
+
+                            <!-- Submit -->
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-gavel"></i> Create Auction
+                            </button>
+
+                        </form>
+
+                        <a href="{% url 'seller_dashboard' %}" class="btn-back">
+                            <i class="fas fa-arrow-left"></i> Back to Dashboard
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+{% endblock %}
 
-<!-- Breadcrumb -->
-<div class="breadcrumb-section breadcrumb-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 offset-lg-2 text-center">
-				<div class="breadcrumb-text">
-					<p>Create Auction</p>
-					<h1>Auction Registration</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- KYC Form Section -->
-<div class="single-product mt-150 mb-150">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-8">
-
-				<div class="card p-5">
-<form method="POST" action="{% url 'save_auction' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    <h3 class="mb-4 text-center">Auction Registration</h3>
-
-    <!-- Title -->
-    <h5>Title</h5>
-    <div class="form-group mb-3">
-        <input type="text" class="form-control" name="title" required>
-    </div>
-
-    <!-- Description -->
-    <h5>Description</h5>
-    <div class="form-group mb-3">
-        <textarea class="form-control" name="description" rows="3" required></textarea>
-    </div>
-
-    <!-- Starting Price -->
-    <h5>Starting Price</h5>
-    <div class="form-group mb-3">
-        <input type="number" step="1" class="form-control w-100" name="starting_price" required>
-    </div>
-
-    <!-- Image -->
-    <h5>Image</h5>
-    <div class="form-group mb-3">
-        <input type="file" class="form-control" name="image" accept="image/*">
-    </div>
-
-    <!-- Start Date & Time -->
-    <h5>Start Date & Time</h5>
-    <div class="form-group mb-3">
-        <input type="datetime-local" class="form-control" name="start_time" required>
-    </div>
-
-    <!-- End Date & Time -->
-    <h5>End Date & Time</h5>
-    <div class="form-group mb-4">
-        <input type="datetime-local" class="form-control" name="end_time" required>
-    </div>
-
-    <button type="submit" class="boxed-btn">
-        Create Auction
-    </button>
-</form>
-					<div class="text-center mt-4">
-						<a href="{% url 'seller_dashboard' %}" class="back-btn">
-							← Back to Dashboard
-						</a>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Footer -->
-<script src="{% static 'accounts/assets/js/jquery-1.11.3.min.js' %}"></script>
-<script src="{% static 'accounts/assets/bootstrap/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'accounts/assets/js/main.js' %}"></script>
-
-<style>
-	/* Card Border & Styling */
-	.card {
-		border: 2px solid #797575;
-		border-radius: 12px;
-		background-color: #ffffff;
-		box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-	}
-
-	/* Section Titles */
-	h3 {
-		font-weight: 600;
-		color: #333;
-		text-align: center;
-	}
-
-	h5 {
-		color: #1e7e34;
-		font-weight: 600;
-		margin-top: 20px;
-	}
-
-	/* Input Styling */
-	.form-control {
-		border-radius: 8px;
-		border: 1px solid #ccc;
-		padding: 10px;
-	}
-
-	.form-control:focus {
-		border-color: #28a745;
-		box-shadow: 0 0 5px rgba(40,167,69,0.3);
-	}
-
-	/* Submit Button */
-	/* Submit Button - Full Width */
-.boxed-btn {
-	width: 100%;
-	background-color: #28a745;
-	color: white;
-	padding: 10px;
-	border-radius: 8px;
-	border: none;
-	font-weight: 600;
-	transition: 0.3s ease;
-}
-
-.boxed-btn:hover {
-	background-color: #218838;
-	box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-	/* Back Button */
-	.back-btn {
-		display: inline-block;
-		margin-top: 15px;
-		padding: 8px 20px;
-		border-radius: 25px;
-		background-color: #6c757d;
-		color: white;
-		text-decoration: none;
-		font-weight: 500;
-		transition: 0.3s ease;
-	}
-
-	.back-btn:hover {
-		background-color: #5a6268;
-		transform: translateY(-2px);
-	}
-</style>
-
-
-</body>
-</html>
+{% block extra_scripts %}
+<script>
+    function showFileName(input) {
+        const label = document.getElementById('file-name');
+        if (input.files && input.files[0]) {
+            label.textContent = '📎 ' + input.files[0].name;
+        }
+    }
+</script>
+{% endblock %}

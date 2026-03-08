@@ -295,8 +295,9 @@
       </tr>
     </thead>
     <tbody>
+    {% for s in buyer %}
       <tr class="table-info">
-        {% for s in buyer %}
+
         <td>{{s.id}}</td>
         <td>{{s.buyer_name}}</td>
         <td>{{s.user.email}}</td>
@@ -306,8 +307,9 @@
           <button class="btn btn-sm btn-primary">Accept</button>
           <button class="btn btn-sm btn-danger">Reject</button>
         </td>
-        {% endfor %}
       </tr>
+        {% endfor %}
+
      
     </tbody>
   </table>

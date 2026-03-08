@@ -9,6 +9,9 @@ urlpatterns=[
     path('about/', views.about, name='about'),
     path('active_auctions/', views.active_auctions, name='active_auctions'),
     path('active_auction_viewmore/<int:a_id>/', views.active_auction_viewmore, name='active_auction_viewmore'),
+    path('seller_auctions/', views.seller_my_auctions, name='seller_auctions'),
+    path('past_auction_viewmore/<int:a_id>/', views.past_auction_viewmore, name='past_auction_viewmore'),
+    
 
     path('save_bid/<int:auction_id>/', views.save_bid, name='save_bid'),
 

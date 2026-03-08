@@ -1,0 +1,308 @@
+{% extends 'seller_base.html' %}
+{% load static %}
+
+{% block tab_title %}My Auctions{% endblock %}
+{% block page_title %}My Auctions{% endblock %}
+{% block nav_auctions %}active{% endblock %}
+
+{% block extra_styles %}
+    :root {
+        --spice-orange: #fd7e14;
+        --spice-dark:   #1a1a2e;
+        --spice-green:  #2d6a4f;
+        --spice-cream:  #fdf6ec;
+        --spice-red:    #c0392b;
+        --card-radius:  16px;
+    }
+    .auctions-heading {
+        text-align: center;
+        margin-bottom: 48px;
+    }
+    .auctions-heading h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.6rem;
+        font-weight: 900;
+        color: var(--spice-dark);
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+    }
+    .auctions-heading p {
+        font-family: 'DM Sans', sans-serif;
+        color: #888;
+        font-size: 1rem;
+    }
+    .auctions-heading .title-line {
+        width: 60px;
+        height: 4px;
+        background: var(--spice-orange);
+        border-radius: 2px;
+        margin: 10px auto 0;
+    }
+    .auction-card {
+        background: #fff;
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        animation: fadeUp 0.5s ease both;
+    }
+    .auction-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.13);
+    }
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    .col-lg-3:nth-child(1) .auction-card { animation-delay: 0.05s; }
+    .col-lg-3:nth-child(2) .auction-card { animation-delay: 0.12s; }
+    .col-lg-3:nth-child(3) .auction-card { animation-delay: 0.19s; }
+    .col-lg-3:nth-child(4) .auction-card { animation-delay: 0.26s; }
+    .col-lg-3:nth-child(5) .auction-card { animation-delay: 0.33s; }
+    .col-lg-3:nth-child(6) .auction-card { animation-delay: 0.40s; }
+    .card-img-wrap {
+        position: relative;
+        height: 190px;
+        overflow: hidden;
+    }
+    .card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+    .auction-card:hover .card-img-wrap img {
+        transform: scale(1.06);
+    }
+    .card-img-wrap::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(26,26,46,0.55) 0%, transparent 60%);
+        pointer-events: none;
+    }
+    .status-pill {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 2;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        backdrop-filter: blur(6px);
+    }
+    .status-pill.ongoing  { background: rgba(45,106,79,0.92); color: #fff; }
+    .status-pill.completed { background: rgba(192,57,43,0.92); color: #fff; }
+    .status-dot {
+        width: 7px; height: 7px;
+        border-radius: 50%;
+        background: currentColor;
+        animation: pulse-dot 1.5s infinite;
+    }
+    .status-pill.completed .status-dot { animation: none; }
+    @keyframes pulse-dot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50%       { opacity: 0.5; transform: scale(0.7); }
+    }
+    .price-chip {
+        position: absolute;
+        bottom: 12px; right: 12px;
+        z-index: 2;
+        background: var(--spice-orange);
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+    }
+    .card-content {
+        padding: 20px 20px 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--spice-dark);
+        margin-bottom: 8px;
+        line-height: 1.35;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .card-excerpt {
+        font-size: 0.85rem;
+        color: #888;
+        line-height: 1.6;
+        margin-bottom: 14px;
+        flex: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .card-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 16px;
+        padding: 12px 14px;
+        background: #f8f8f8;
+        border-radius: 10px;
+    }
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8rem;
+        color: #666;
+    }
+    .meta-item i { width: 16px; color: var(--spice-orange); font-size: 0.78rem; flex-shrink: 0; }
+    .card-footer-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 20px;
+        border-top: 1px solid #f0f0f0;
+        background: #fff;
+        gap: 8px;
+    }
+    .view-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--spice-orange);
+        text-decoration: none;
+        transition: gap 0.2s ease, color 0.2s;
+    }
+    .view-btn:hover { color: var(--spice-dark); gap: 12px; text-decoration: none; }
+    .view-btn .arrow-circle {
+        width: 28px; height: 28px;
+        border-radius: 50%;
+        background: var(--spice-orange);
+        color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.7rem;
+        transition: background 0.2s;
+    }
+    .view-btn:hover .arrow-circle { background: var(--spice-dark); }
+    .empty-state { text-align: center; padding: 70px 20px; color: #bbb; }
+    .empty-state i { font-size: 3.5rem; display: block; margin-bottom: 16px; color: #ddd; }
+    .empty-state h4 { font-family: 'Playfair Display', serif; color: #aaa; }
+{% endblock %}
+
+{% block content %}
+<div class="page-body" style="background: var(--spice-cream, #fdf6ec);">
+    <div class="container">
+
+        <div class="auctions-heading">
+            <h2>My Auctions</h2>
+            <p>All your created auctions — active and past</p>
+            <div class="title-line"></div>
+        </div>
+
+        <div class="row">
+            {% for auction in auctions %}
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="auction-card">
+
+                    <!-- Image -->
+                    <div class="card-img-wrap">
+                        <img src="{{ auction.image.url }}" alt="{{ auction.title }}">
+                        {% if auction.end_time < now %}
+                        <span class="status-pill completed">
+                            <span class="status-dot"></span> Completed
+                        </span>
+                        {% else %}
+                        <span class="status-pill ongoing">
+                            <span class="status-dot"></span> Ongoing
+                        </span>
+                        {% endif %}
+                        <span class="price-chip">₹ {{ auction.starting_price }}</span>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="card-content">
+                        <h3 class="card-title">{{ auction.title }}</h3>
+                        <p class="card-excerpt">{{ auction.description|truncatewords:15 }}</p>
+                        <div class="card-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-user"></i>
+                                <span>{{ auction.seller.username }}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Ends: {{ auction.end_time }}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-tag"></i>
+                                <span><strong>Starting Price:</strong> ₹ {{ auction.starting_price }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="card-footer-btn">
+                        <a href="{% url 'past_auction_viewmore' a_id=auction.id %}" class="view-btn">
+                            View
+                            <span class="arrow-circle">
+                                <i class="fas fa-angle-right"></i>
+                            </span>
+                        </a>
+                        {% if auction.end_time > now %}
+                        <div style="display:flex; gap:6px;">
+                            <a href="{% url 'edit_auction' auction.id %}"
+                               style="width:32px; height:32px; border-radius:50%; background:#28a745; color:#fff;
+                                      display:flex; align-items:center; justify-content:center; font-size:0.75rem;
+                                      text-decoration:none; transition:background 0.2s;"
+                               title="Edit Auction">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <form method="POST" action="{% url 'delete_auction' auction.id %}"
+                                  onsubmit="return confirm('Delete this auction?');" style="margin:0;">
+                                {% csrf_token %}
+                                <button type="submit"
+                                        style="width:32px; height:32px; border-radius:50%; background:#dc3545; color:#fff;
+                                               border:none; display:flex; align-items:center; justify-content:center;
+                                               font-size:0.75rem; cursor:pointer; transition:background 0.2s;"
+                                        title="Delete Auction">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="empty-state">
+                    <i class="fas fa-gavel"></i>
+                    <h4>No Auctions Created Yet</h4>
+                    <p>Your auctions will appear here once you create them.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

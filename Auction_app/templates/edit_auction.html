@@ -1,0 +1,160 @@
+{% extends 'seller_base.html' %}
+{% load static %}
+
+{% block tab_title %}Edit Auction{% endblock %}
+{% block page_title %}Edit Auction{% endblock %}
+{% block nav_auctions %}active{% endblock %}
+
+{% block extra_styles %}
+    .card {
+        border: 2px solid #797575;
+        border-radius: 12px;
+        background-color: #ffffff;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    h3 { font-weight: 600; color: #333; }
+    h5 { color: #1e7e34; font-weight: 600; margin-top: 20px; }
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+    .form-control:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 5px rgba(40,167,69,0.3);
+    }
+    .boxed-btn {
+        width: 100%;
+        background-color: #28a745;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+    .boxed-btn:hover {
+        background-color: #218838;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .delete-btn {
+        width: 100%;
+        background-color: #dc3545;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+    .delete-btn:hover {
+        background-color: #c82333;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .back-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 20px;
+        border-radius: 25px;
+        background-color: #6c757d;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s ease;
+    }
+    .back-btn:hover {
+        background-color: #5a6268;
+        transform: translateY(-2px);
+    }
+{% endblock %}
+
+{% block content %}
+<div class="page-body">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card p-5">
+
+                    <form method="POST" action="{% url 'edit_auction' auction.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <h3 class="mb-4 text-center">Edit Auction</h3>
+
+                        <!-- Title -->
+                        <h5>Title</h5>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" name="title"
+                                   value="{{ auction.title }}" required>
+                        </div>
+
+                        <!-- Description -->
+                        <h5>Description</h5>
+                        <div class="form-group mb-3">
+                            <textarea class="form-control" name="description"
+                                      rows="3" required>{{ auction.description }}</textarea>
+                        </div>
+
+                        <!-- Starting Price -->
+                        <h5>Starting Price</h5>
+                        <div class="form-group mb-3">
+                            <input type="number" step="1" class="form-control"
+                                   name="starting_price" value="{{ auction.starting_price }}" required>
+                        </div>
+
+                        <!-- Current Image -->
+                        {% if auction.image %}
+                        <h5>Current Image</h5>
+                        <div class="mb-3">
+                            <img src="{{ auction.image.url }}" alt="Current Image"
+                                 style="max-height:180px; border-radius:8px; object-fit:cover; width:100%;">
+                        </div>
+                        {% endif %}
+
+                        <!-- New Image -->
+                        <h5>Change Image <small style="color:#999; font-size:0.8rem;">(leave empty to keep current)</small></h5>
+                        <div class="form-group mb-3">
+                            <input type="file" class="form-control" name="image" accept="image/*">
+                        </div>
+
+                        <!-- Start Date & Time -->
+                        <h5>Start Date & Time</h5>
+                        <div class="form-group mb-3">
+                            <input type="datetime-local" class="form-control" name="start_time"
+                                   value="{{ auction.start_time|date:'Y-m-d' }}T{{ auction.start_time|time:'H:i' }}" required>
+                        </div>
+
+                        <!-- End Date & Time -->
+                        <h5>End Date & Time</h5>
+                        <div class="form-group mb-4">
+                            <input type="datetime-local" class="form-control" name="end_time"
+                                   value="{{ auction.end_time|date:'Y-m-d' }}T{{ auction.end_time|time:'H:i' }}" required>
+                        </div>
+
+                        <button type="submit" class="boxed-btn">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </form>
+
+                    <!-- Delete Button -->
+                    <form method="POST" action="{% url 'delete_auction' auction.id %}"
+                          onsubmit="return confirm('Are you sure you want to delete this auction? This cannot be undone.');">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn mt-3">
+                            <i class="fas fa-trash-alt"></i> Delete Auction
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <a href="{% url 'seller_auctions' %}" class="back-btn">
+                            ← Back to My Auctions
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

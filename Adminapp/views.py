@@ -1,9 +1,37 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from Accounts_app.models import *
+from django.contrib.auth import authenticate,login
 
 # Create your views here.
 def dashboard(request):
     return render(request,"dashboard.html")
+
+def admin_login_page(request):
+    return render(request,'admin_login.html')
+    
+def admin_login(request):
+    if request.method=='POST':
+        uname=request.POST.get("uname")
+        pswd=request.POST.get("password")
+
+        if CustomUser.objects.filter(username__contains=uname).exists():
+            user=authenticate(username=uname,password=pswd)
+            if user is not None:
+                login(request,user)
+                request.session['username']=uname
+                request.session['password']=pswd
+                return redirect(dashboard)
+            else:
+                return redirect(admin_login_page)
+        else:
+            return redirect(admin_login_page)
+
+def admin_logout(request):
+    del request.session['username']
+    del request.session['password']
+    return redirect(admin_login_page)
+
+
 
 def view_seller(request):
     seller=Seller.objects.all()

@@ -66,9 +66,8 @@ def login_user(request):
             login(request, user)
 
             # Role-based redirection
-            if user.is_superuser:  # admin/superuser
-                return redirect("dashboard") 
-            elif user.role == "seller":
+           
+            if user.role == "seller":
                 return redirect("seller_dashboard")
             elif user.role == "buyer":
                 return redirect("buyer_dashboard")
@@ -123,6 +122,50 @@ def active_auction_viewmore(request, a_id):
         'current_highest': current_highest,
         'highest_bid': highest_bid
     })
+    
+    
+def seller_my_auctions(request):
+
+    seller = request.user
+
+    auctions = AuctionDB.objects.filter(seller=seller).order_by('-id')
+
+    return render(request, 'seller_auctions.html', {
+        'auctions': auctions,
+        'now': timezone.now()
+    })
+    
+def past_auction_viewmore(request, a_id):
+    auction = get_object_or_404(AuctionDB, id=a_id)
+    now = timezone.localtime()
+    
+    # Get all bids ordered by highest amount first
+    bids = auction.bids.order_by('-amount')
+    
+    # Get the highest bid
+    highest_bid = bids.first()
+    
+    if highest_bid:
+        highest_bidder = highest_bid.user
+        ended_price = highest_bid.amount
+    else:
+        highest_bidder = None
+        ended_price = None
+
+    return render(request, 'past_auction_viewmore.html', {
+        'auction': auction,
+        'bids': bids,
+        'highest_bid': highest_bid,
+        'highest_bidder': highest_bidder,
+        'ended_price': ended_price,
+        'now': now,
+        'is_live': False,
+    })
+
+
+
+
+
 
 #-----------------------------------------------------------------------------------------------------------------------------------
 
@@ -142,7 +185,28 @@ def save_bid(request, auction_id):
 
 #--------------------------------------------------------------------------------------------------------------------------------------
 def seller_dashboard(request):
-    return render(request,'seller_dashboard.html')
+    now = timezone.localtime()
+    auctions = AuctionDB.objects.filter(seller=request.user)
+    
+    total_auctions  = auctions.count()
+    active_auctions = auctions.filter(end_time__gt=now, start_time__lte=now).count()
+    completed_auctions = auctions.filter(end_time__lt=now).count()
+    
+    # Total bids received across all auctions
+    from Bid_app.models import Bid
+    total_bids = Bid.objects.filter(auction__seller=request.user).count()
+
+    # Recent 3 auctions
+    recent_auctions = auctions.order_by('-start_time')[:3]
+
+    return render(request, 'seller_dashboard.html', {
+        'total_auctions': total_auctions,
+        'active_auctions': active_auctions,
+        'completed_auctions': completed_auctions,
+        'total_bids': total_bids,
+        'recent_auctions': recent_auctions,
+        'now': now,
+    })
 
 def kyc_form(request):
     return render(request,'kyc_form.html')
