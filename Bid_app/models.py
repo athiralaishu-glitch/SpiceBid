@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from Accounts_app.models import CustomUser
 from Auction_app.models import AuctionDB
 

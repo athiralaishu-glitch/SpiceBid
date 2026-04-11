@@ -24,8 +24,8 @@ import Auction_app.urls
 
 
 urlpatterns = [
+    path('', include(Adminapp.urls)),
     path('admin/', admin.site.urls),
-    path('store/',include(Adminapp.urls)),
     path('Accounts/',include(Accounts_app.urls)),
     path('Auctions/',include(Auction_app.urls))
 ]

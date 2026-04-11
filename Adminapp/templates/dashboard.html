@@ -33,7 +33,7 @@
           <a class="nav-link" href="index.html">
             <i class="mdi mdi-view-quilt menu-icon"></i>
             <span class="menu-title">Dashboard</span>
-            <div class="badge badge-info badge-pill">2</div>
+
           </a>
         </li>
         <li class="nav-item sidebar-category">
@@ -54,26 +54,14 @@
           </div>
         </li>
        
-        <li class="nav-item sidebar-category">
-          <p>Pages</p>
-          <span></span>
-        </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+          <a class="nav-link" href="{% url 'view_winner' %}">
             <i class="mdi mdi-account menu-icon"></i>
-            <span class="menu-title">Reports</span>
-            <i class="menu-arrow"></i>
+            <span class="menu-title">Results</span>
+
           </a>
-          <div class="collapse" id="auth">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{% static 'pages/samples/login.html' %}"> Login </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{% static 'pages/samples/login-2.html' %}"> Login 2 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{% static 'pages/samples/register.html' %}"> Register </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{% static 'pages/samples/register-2.html' %}"> Register 2 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{% static 'pages/samples/lock-screen.html' %}"> Lockscreen </a></li>
-            </ul>
-          </div>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{% url 'admin_logout' %}">
             <i class="mdi mdi-account menu-icon"></i>
@@ -81,6 +69,7 @@
             
           </a>
         </li>
+
         
        
       </ul>
@@ -98,32 +87,35 @@
             <!-- <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{% static 'images/logo1.png' %}" alt="logo"/></a> -->
           </div>
           <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, Admin</h4>
-          <ul class="navbar-nav navbar-nav-right">
-            
-            
-            <li class="nav-item dropdown mr-2">
-              <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-                <i class="mdi mdi-account mx-0"></i>
-                <span class="count bg-danger">1</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                <p class="mb-0 font-weight-normal float-left dropdown-header"></p>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-success">
-                      <i class="mdi mdi-information mx-0"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <h6 class="preview-subject font-weight-normal">Logout</h6>
-                   
-                  </div>
-                </a>
-               
-               
-              </div>
-            </li>
-          </ul>
+
+            <ul class="navbar-nav navbar-nav-right">
+  <li class="nav-item dropdown mr-2">
+
+    <!-- ICON CLICK → DROPDOWN -->
+    <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center"
+       id="notificationDropdown" href="#" data-toggle="dropdown">
+      <i class="mdi mdi-account mx-0"></i>
+    </a>
+
+    <!-- DROPDOWN -->
+    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+         aria-labelledby="notificationDropdown">
+
+      <a class="dropdown-item preview-item" href="{% url 'admin_logout' %}">
+        <div class="preview-thumbnail">
+          <div class="preview-icon bg-success">
+            <i class="mdi mdi-logout mx-0"></i>
+          </div>
+        </div>
+        <div class="preview-item-content">
+          <h6 class="preview-subject font-weight-normal">Logout</h6>
+        </div>
+      </a>
+
+    </div>
+  </li>
+</ul>
+
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
           </button>

@@ -270,9 +270,25 @@
                             <div class="form-divider"></div>
 
                             <!-- Submit -->
-                            <button type="submit" class="btn-submit">
-                                <i class="fas fa-gavel"></i> Create Auction
-                            </button>
+                           {% if kyc_status == "Approved" %}
+
+    <button type="submit" class="btn-submit">
+        <i class="fas fa-gavel"></i> Create Auction
+    </button>
+
+{% else %}
+
+    <div style="text-align:center; padding:15px;">
+        <p style="color:red; font-weight:600;">
+             Your KYC is not approved yet.
+        </p>
+
+        <a href="{% url 'kyc_form' %}" class="btn-submit" style="text-decoration:none;">
+            <i class="fas fa-user-check"></i> Update Your KYC
+        </a>
+    </div>
+
+{% endif %}
 
                         </form>
 

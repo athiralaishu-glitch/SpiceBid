@@ -1,56 +1,6 @@
-<!DOCTYPE html>
+{% extends 'seller_base.html' %}}
 {% load static %}
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Seller KYC</title>
-
-	<link rel="shortcut icon" type="image/png" href="{% static 'accounts/assets/img/favicon.png' %}">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/all.min.css' %}">
-	<link rel="stylesheet" href="{% static 'accounts/assets/bootstrap/css/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/main.css' %}">
-	<link rel="stylesheet" href="{% static 'accounts/assets/css/responsive.css' %}">
-</head>
-
-<body>
-
-<!-- Header (same as My Account page) -->
-<div class="top-header-area" id="sticker">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<div class="main-menu-wrap">
-					<div class="site-logo">
-						<a href="#">
-							<img src="{% static 'accounts/assets/img/logo.png' %}" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Breadcrumb -->
-<div class="breadcrumb-section breadcrumb-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 offset-lg-2 text-center">
-				<div class="breadcrumb-text">
-					<p>Complete Your Verification</p>
-					<h1>Seller KYC Update</h1>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
+{% block content %}
 <!-- KYC Form Section -->
 <div class="single-product mt-150 mb-150">
 	<div class="container">
@@ -118,10 +68,6 @@
 	</div>
 </div>
 
-<!-- Footer -->
-<script src="{% static 'accounts/assets/js/jquery-1.11.3.min.js' %}"></script>
-<script src="{% static 'accounts/assets/bootstrap/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'accounts/assets/js/main.js' %}"></script>
 
 <style>
 	/* Card Border & Styling */
@@ -194,6 +140,4 @@
 	}
 </style>
 
-
-</body>
-</html>
+{% endblock %}

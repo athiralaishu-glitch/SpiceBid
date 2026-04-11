@@ -1,0 +1,94 @@
+{% extends 'buyer_dashboard.html' %}
+{% load static %}
+{% block content %}
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="breadcrumb-text">
+					<p>SpiceBid</p>
+					<h1>Past Auctions</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end breadcrumb section -->
+
+
+<div class="latest-news mt-150 mb-150">
+	<div class="container">
+		<div class="row">
+
+{% for auction in auctions %}
+<div class="col-lg-4 col-md-6">
+    <div class="single-latest-news">
+
+        <a href="#">
+            <div class="latest-news-bg"
+                 style="background-image: url('{{ auction.image.url }}');">
+            </div>
+        </a>
+
+        <div class="news-text-box">
+            <h3>
+                <a href="#">
+                    {{ auction.title }}
+                </a>
+            </h3>
+
+            <p class="excerpt">
+                {{ auction.description|truncatewords:15 }}
+            </p>
+
+            <p class="blog-meta">
+                <span class="author">
+                    <i class="fas fa-user"></i>
+                    {{ auction.seller.username }}
+                </span><br><br>
+
+                <span class="date">
+                    <i class="fas fa-calendar"></i>
+                    Ended: {{ auction.end_time }}
+                </span>
+            </p>
+
+            <p><strong>Starting Price:</strong> ₹ {{ auction.starting_price }}</p>
+
+
+            <p>
+                <strong>Your Last Bid:</strong>
+                ₹ {{ auction.bids.last.amount }}
+            </p>
+
+            {% with highest=auction.bids.all|dictsortreversed:"amount"|first %}
+
+{% if highest %}
+<p>
+    <strong>Winner:</strong> {{ highest.user.username }}
+</p>
+
+<p>
+    <strong>Winning Bid:</strong> ₹ {{ highest.amount }}
+</p>
+{% endif %}
+
+{% endwith %}
+
+        </div>
+    </div>
+</div>
+
+{% empty %}
+<div class="col-12 text-center">
+    <h4>No Past Auctions Found</h4>
+</div>
+{% endfor %}
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

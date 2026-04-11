@@ -1,0 +1,66 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-lg-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+
+        <h4 class="card-title">Auction Winners Table</h4>
+
+        <div class="table-responsive pt-3">
+          <table class="table table-bordered">
+
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Auction Title</th>
+                <th>Winner Name</th>
+                <th>Winner Email</th>
+                <th>Winning Amount (₹)</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              {% for auction in auctions %}
+              <tr class="table-info">
+
+                <td>{{ auction.id }}</td>
+                <td>{{ auction.title }}</td>
+
+                {% if auction.bids.all %}
+                    {% with winner=auction.bids.all|dictsortreversed:"amount"|first %}
+
+                        <td>{{ winner.user.username }}</td>
+                        <td>{{ winner.user.email }}</td>
+                        <td>₹{{ winner.amount }}</td>
+
+                    {% endwith %}
+                {% else %}
+
+                        <td colspan="3">No bids yet</td>
+
+                {% endif %}
+
+               <td>
+  {{ auction.seller.username }}
+</td>
+
+              </tr>
+              {% endfor %}
+
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

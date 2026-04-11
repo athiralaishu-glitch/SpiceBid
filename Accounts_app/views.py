@@ -1,11 +1,12 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.utils import timezone
 from Auction_app.models import *
 from Bid_app.models import *
 from django.contrib.auth.decorators import login_required
-from decimal import Decimal,InvalidOperation
+from decimal import Decimal
+from Bid_app.models import Bid
 
 from Accounts_app.models import *
 from Adminapp import views
@@ -25,7 +26,7 @@ def save_register_data(request):
         cpswd = request.POST.get("confirm_password")
         role = request.POST.get("role")
 
-        # Create user
+
         user = CustomUser.objects.create_user(
             username=uname,
             email=email,
@@ -34,7 +35,7 @@ def save_register_data(request):
             is_verified=False
         )
 
-        # Create Seller or Buyer profile
+
         if role == "seller":
             Seller.objects.create(
                 user=user,
@@ -65,7 +66,7 @@ def login_user(request):
         if user is not None:
             login(request, user)
 
-            # Role-based redirection
+
            
             if user.role == "seller":
                 return redirect("seller_dashboard")
@@ -79,6 +80,12 @@ def login_user(request):
             return redirect("registration")
 
     return render(request, "registration.html")
+
+def logout_user(request):
+    logout(request)
+    messages.success(request,"User Logged out succesfully...")
+    return redirect(registration)
+    
 
 #-------------------------------------------------------------------------------------------------------------------------------------
 
@@ -107,7 +114,7 @@ def active_auction_viewmore(request, a_id):
 
     now = timezone.localtime()
 
-    # You can still pass is_live to template if needed
+
     is_live = auction.is_live
     highest_bid = auction.bids.order_by('-amount').first()
 
@@ -123,7 +130,30 @@ def active_auction_viewmore(request, a_id):
         'highest_bid': highest_bid
     })
     
-    
+def buyer_past_auctions(request):
+    auctions = AuctionDB.objects.filter(
+        bids__user=request.user,
+        end_time__lt=timezone.now()
+    ).distinct()
+
+    return render(request, 'buyer_past_auctions.html', {'auctions': auctions})
+
+
+def contact(request):
+    return render(request, 'contact.html')
+
+
+@login_required
+def buyer_profile(request):
+    buyer = Buyer.objects.filter(user=request.user).first()
+
+    return render(request, 'buyer_profile.html', {
+        'buyer': buyer
+    })
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 def seller_my_auctions(request):
 
     seller = request.user
@@ -139,10 +169,10 @@ def past_auction_viewmore(request, a_id):
     auction = get_object_or_404(AuctionDB, id=a_id)
     now = timezone.localtime()
     
-    # Get all bids ordered by highest amount first
+    # here we get all bids ordered by highest amount first
     bids = auction.bids.order_by('-amount')
     
-    # Get the highest bid
+
     highest_bid = bids.first()
     
     if highest_bid:
@@ -193,7 +223,7 @@ def seller_dashboard(request):
     completed_auctions = auctions.filter(end_time__lt=now).count()
     
     # Total bids received across all auctions
-    from Bid_app.models import Bid
+
     total_bids = Bid.objects.filter(auction__seller=request.user).count()
 
     # Recent 3 auctions
@@ -216,7 +246,7 @@ def save_kyc(request):
     seller = Seller.objects.get(user=request.user)
     if request.method == "POST":
         
-        # Get form data
+
         seller.pan_number = request.POST.get("pan_number")
         seller.pan_card_image = request.FILES.get("pan_card_image")
 
@@ -227,7 +257,7 @@ def save_kyc(request):
         seller.bank_account_number = request.POST.get("bank_account_number")
         seller.bank_ifsc = request.POST.get("bank_ifsc")
 
-        # After updating KYC → set status to Pending
+
         seller.kyc_status = "Pending"
 
         seller.save()

@@ -17,7 +17,11 @@ urlpatterns=[
 
     path('buyer_dashboard/',views.buyer_dashboard,name='buyer_dashboard'),
     path('login_user/',views.login_user,name='login_user'),
+    path('logout_user/',views.logout_user,name='logout_user'),
     path('kyc_form/',views.kyc_form,name='kyc_form'),
     path('save_kyc/',views.save_kyc,name='save_kyc'),
     path('seller_account/',views.seller_account,name='seller_account'),
+    path('buyer_past_auctions/', views.buyer_past_auctions, name='buyer_past_auctions'),
+    path('contact/', views.contact, name='contact'),
+    path('buyer_profile/', views.buyer_profile, name='buyer_profile'),
 ]

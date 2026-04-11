@@ -253,7 +253,7 @@
 
 <body>
 
-<!-- ══ SIDEBAR ══ -->
+
 <aside class="sidebar">
 
     <div class="sidebar-brand">
@@ -282,9 +282,7 @@
         <a href="{% url 'seller_auctions' %}" class="nav-item {% block nav_auctions %}{% endblock %}">
             <i class="fas fa-list-alt"></i> My Auctions
         </a>
-        <a href="#" class="nav-item {% block nav_results %}{% endblock %}">
-            <i class="fas fa-trophy"></i> Auction Results
-        </a>
+
 
         <div class="nav-section-label">Account</div>
         <a href="{% url 'seller_account' %}" class="nav-item {% block nav_account %}{% endblock %}">
@@ -293,14 +291,14 @@
     </nav>
 
     <div class="sidebar-footer">
-        <a href="#" class="nav-item logout">
+        <a href="{% url 'logout_user' %}" class="nav-item logout">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>
     </div>
 
 </aside>
 
-<!-- ══ MAIN ══ -->
+
 <div class="main-content">
 
     <div class="topbar">

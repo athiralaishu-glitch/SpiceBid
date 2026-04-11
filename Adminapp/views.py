@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from Accounts_app.models import *
 from django.contrib.auth import authenticate,login
+from Auction_app.models import  *
 
 # Create your views here.
 def dashboard(request):
@@ -53,3 +54,15 @@ def seller_viewmore(request, s_id):
         return redirect("seller_viewmore", s_id=s_id)
     return render(request, 'seller_viewmore.html',
                   {'seller': seller})
+
+
+def view_winner(request):
+
+    auctions = AuctionDB.objects.all()
+
+    for auction in auctions:
+        auction.winner = auction.bids.order_by('-amount').first()
+
+    return render(request, "view_winner.html", {
+        "auctions": auctions
+    })
